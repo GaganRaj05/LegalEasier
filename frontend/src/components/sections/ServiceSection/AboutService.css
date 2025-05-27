@@ -1,0 +1,145 @@
+.about-services {
+    width: 100%;
+    height: 480vh;
+}
+.protection {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.protection div {
+    width: 50%;
+    height: 100%;
+}
+.about-image {
+    background-image: url("https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/Student-removebg-preview.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+}
+.service-about-info h1{
+    font-weight: 500;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+.service-about-info p {
+    font-weight: 400;
+    width: 500px;
+}
+.service-cards-container {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bankruptcy {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    margin-top:50px;
+}
+.bankruptcy div {
+    width: 50%;
+    height: 100%;
+}
+.bankruptcy-image {
+    background-image: url("https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/undraw_diary_f7r8-1.svg");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+.bankruptcy-info {
+    padding: 100px;
+}
+.bankruptcy h1 {
+    font-weight: 600;
+    font-size: 30px
+}
+.debt-settlement {
+    margin-top: 50px;
+    width: 100%;
+    height: 300px;
+    display: flex;
+}
+.debt-settlement div {
+    width: calc(100% / 3);
+    height: 100%;
+}
+.debt-img {
+    background-image: url("https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/LLP-removebg-preview-2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.chapters {
+    padding: 30px;
+}
+.chapters p {
+    margin-top: 14px;
+}
+.about-service-cards-container {
+    height: 250px;
+    width: 250px;
+    margin: 10px;
+    background-color: aqua;
+}
+
+.documents {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+}
+.documents-review {
+    width: 50%;
+    height: 100%;
+}
+.documents-info {
+    width: 50%;
+    height: 100%;
+    padding: 50px;
+}
+
+.img-group {
+    width: 100px;
+    height: 100px;
+    display: flex;
+}
+.documents-info h1 {
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+.documents-info p {
+    margin-top: 10px;
+}
+.sub-div  {
+    height: 100px;
+    width: 100%;
+    padding-top: 50px;
+    
+}
+.sub-div  h1 {
+    font-size: 38px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-left: 50px;
+}
+.sub-div p {
+    width: 500px;
+    margin-left: 50px;
+}
+
+.price-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.price-offers h1 {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 600;
+    margin-bottom: 35px;
+}

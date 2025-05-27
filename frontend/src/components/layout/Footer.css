@@ -1,0 +1,44 @@
+.footer {
+    padding-top: 50px;
+    height: 60vh;
+    width: 100%;
+    background-color: #000000;
+}
+.logo-footer {
+    height: 35px;
+}
+.footer-links {
+    width: calc(100% - 200px);
+    height: calc(100% - 100px);
+    margin: 0 100px 0 100px;
+    border-bottom: 1px solid white;
+    display: flex;
+}
+.footer-groups {
+    width: calc(100% / 4);
+    height: 100%;
+    
+}
+.footer-text {
+    color: white;
+    margin-top: 20px;
+}
+h3 {
+    color: white;
+}
+.links {
+    padding-left: 30px;
+}
+.footer-terms {
+    display: flex;
+    padding: 20px 100px 0 100px;
+    align-items: center;
+}
+.terms-text {
+    color: white;
+    margin-right: 20px;
+}
+.mr {
+    margin-left: 250px;
+    
+}

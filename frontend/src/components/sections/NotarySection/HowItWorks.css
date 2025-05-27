@@ -1,0 +1,85 @@
+.hw-it-works {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  margin-top: 40px;
+}
+
+.hw-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.hw-container {
+  position: relative;
+  padding-left: 80px;
+}
+
+.hw-line {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #0056a3;
+}
+
+.hw-step {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hw-number-circle {
+  position: absolute;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 2px solid #0056a3;
+  border-radius: 50%;
+  color: #0056a3;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.hw-box {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-left: 60px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.hw-icon {
+  font-size: 1.8rem;
+  color: #0056a3;
+  padding: 0.3rem;
+  border: 1px solid #0056a3;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hw-step-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #333;
+}
+
+.hw-description {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}

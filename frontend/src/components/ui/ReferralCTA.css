@@ -1,0 +1,43 @@
+.referral-cta {
+  background: url("https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/full.jpg") center center/cover no-repeat;
+  padding: 6rem 1rem;
+  text-align: center;
+  position: relative;
+  color: white;
+}
+
+.cta-overlay {
+  background-color: rgba(0, 64, 128, 0.6);
+  padding: 4rem 1rem;
+  border-radius: 8px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta-heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.cta-subtext {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background-color: white;
+  color: #004080;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #e6e6e6;
+}

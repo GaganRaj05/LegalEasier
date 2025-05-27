@@ -1,0 +1,101 @@
+.service-cards {
+    background-color: #fff;
+    height: 250px;
+    width: 250px;
+    border-radius: 8px;
+    padding: 10px;
+    color: black;
+}
+.service-cards img {
+    margin-top: 10px;
+}
+.services-head {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.service-info {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.service-cards a {
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+}
+.service-cards a:hover {
+    text-decoration: underline;
+}
+.review-cards {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 200px;
+  width: 200px;
+}
+
+.about-service-cards {
+    border-radius: 10px;
+    border: 3px solid #0c6bb1;
+    height: 250px;
+    width: 300px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.about-service-cards h4 {
+    margin-top: 10px;
+    font-weight: 500;
+}
+.about-service-info {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.offers-card {
+    height: 180px;
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid #0c6bb1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.offers-card:hover {
+    transform: scale(1.02);
+}
+.offers-card h2 {
+    font-size: 18px;
+    font-weight: 600;
+
+}
+.notary-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 300px;
+    margin: 20px;
+    background-color: #0c6bb1;
+}
+.notary-cards p {
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+.notary-cards h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 600;
+}

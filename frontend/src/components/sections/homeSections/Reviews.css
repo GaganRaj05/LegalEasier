@@ -1,0 +1,85 @@
+.Reviews {
+  background-color: #1f1f1f;
+  height: 75vh;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.reviews-head {
+  width: 100%;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.reviews-head h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.reviews-head p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+.reviews-container {
+  height: 50vh;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.review-slide {
+  padding: 10px;
+}
+
+.slick-dots li button:before {
+  color: white;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: white;
+}
+
+.review-cards {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  height: 200px;
+  width: 300px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-author {
+  margin-top: 1px;
+}
+
+.review-author strong {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.review-author span {
+  color: #666;
+  font-size: 0.9rem;
+}
+.slick-dots li button:before {
+  color: #ffffff;  
+  opacity: 0.5;
+  font-size: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ffffff; 
+  opacity: 1;
+}

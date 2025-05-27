@@ -1,0 +1,42 @@
+.notary-info {
+    height: 150vh;
+    width: 100%;
+}
+.notary-info-container {
+    margin-top: 40px;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+}
+.notary-info-img {
+    height: 100%;
+    width: 50%;
+    background-image: url("https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/LLP-removebg-preview-2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.notary-info-content {
+    width: 50%;
+    height: 100%;
+}
+.notary-info-content p {
+    margin-top: 100px;
+    width: 600px;
+}
+.join-notary {
+    height: 60vh;
+    width: 100%;
+}
+.notary-cards-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 200px);
+}
+
+.notary-head {
+    text-align: center;
+    font-weight: 600;
+    font-size: 40px;
+    margin-top: 50px;
+}

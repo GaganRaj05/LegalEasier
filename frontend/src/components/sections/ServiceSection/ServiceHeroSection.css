@@ -1,0 +1,35 @@
+.service {
+    margin-top: 10px;
+    width: 100%;
+    height: 60vh;
+    background-color: #0C6BB100;
+    background-image: url("https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/2201.jpg");
+    --background-overlay: '';
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+}
+.service-hero-content {
+    color: black;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    padding-right: 0;
+}
+.service-hero-img {
+    width: 50%;
+    height: 100%;
+}
+.service-hero-content h1 {
+    font-weight: 600;
+    font-size: 45px;
+}
+.service-hero-content p {
+    font-weight: 500;
+    font-size: 25px;
+}
+.about-services {
+}

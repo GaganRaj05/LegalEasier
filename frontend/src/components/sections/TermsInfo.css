@@ -1,0 +1,22 @@
+.terms-info {
+    max-width:100%;
+    padding: 50px;
+}
+.effective-date {
+  margin-bottom: 1rem;
+}
+
+.terms-info h2 {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.terms-info ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.terms-info li {
+  margin: 0.5rem 0;
+}

@@ -13,7 +13,7 @@ const PrivacyPolicyInfo = () => {
         and outlines your rights concerning your personal data.
       </p>
 
-      <h2>1. Information We Collect</h2>
+      <h2 className="terms-h">1. Information We Collect</h2>
       <p>
         When you opt-in to receive SMS messages from us, we collect the
         following information:
@@ -31,7 +31,7 @@ const PrivacyPolicyInfo = () => {
         </li>
       </ul>
 
-      <h2>2. How We Use Your Information</h2>
+      <h2 className="terms-h">2. How We Use Your Information</h2>
       <p>
         We use your phone number and consent to send you SMS marketing messages
         that may include:
@@ -48,7 +48,7 @@ const PrivacyPolicyInfo = () => {
         described above and will not be used for any unrelated purposes.
       </p>
 
-      <h2>3. Data Sharing and Protection</h2>
+      <h2 className="terms-h">3. Data Sharing and Protection</h2>
       <p>
         We do not sell, rent, or lease your personal information (including your
         phone number) to third parties. We may share your phone number with
@@ -64,7 +64,7 @@ const PrivacyPolicyInfo = () => {
         storage is 100% secure.
       </p>
 
-      <h2>4. Opt-Out and Withdrawal of Consent</h2>
+      <h2 className="terms-h">4. Opt-Out and Withdrawal of Consent</h2>
       <p>
         You have the right to withdraw your consent and opt-out of receiving SMS
         marketing messages at any time. To unsubscribe from our SMS
@@ -77,7 +77,7 @@ const PrivacyPolicyInfo = () => {
         contact us at [insert contact email or phone number].
       </p>
 
-      <h2>5. Changes to This Privacy Policy</h2>
+      <h2 className="terms-h">5. Changes to This Privacy Policy</h2>
       <p>
         We may update this Privacy Policy from time to time. If we make changes,
         we will update the effective date at the top of this page. We encourage
@@ -85,7 +85,7 @@ const PrivacyPolicyInfo = () => {
         protecting your information.
       </p>
 
-      <h2>6. Contact Us</h2>
+      <h2 className="terms-h">6. Contact Us</h2>
       <p>
         If you have any questions about this Privacy Policy or how your personal
         information is handled, please contact us at:

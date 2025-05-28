@@ -170,9 +170,9 @@
     
 }
 
-@media (max-width:1210px) {
+@media (max-width:1250px) {
     .about-services {
-        height: 670vh;
+        height: 720vh;
     }
     .protection {
         flex-direction: column;
@@ -203,14 +203,17 @@
         background-color: black;
     }
 }
-@media (max-width:864px) {
+@media (max-width:980px) {
     .documents {
         height: 60vh;
+    }
+    .about-services {
+        height: 870vh;
     }
 }
 @media (max-width:661px) {
     .about-services {
-        height: 950vh;
+        height: 1350vh;
     }
    .service-cards-container {
     flex-direction: column;

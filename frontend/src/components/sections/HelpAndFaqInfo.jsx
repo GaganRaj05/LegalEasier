@@ -3,7 +3,7 @@ import "./TermsInfo.css";
 const HelpAndFaqInfo = () => {
   return (
     <section className="terms-info">
-      <h2>1. Information We Collect</h2>
+      <h2 className="terms-h">1. Information We Collect</h2>
       <p>
         Welcome to the LegalEasier Help Center. Below you’ll find answers to
         common questions about our SMS marketing service. If you have any
@@ -11,7 +11,7 @@ const HelpAndFaqInfo = () => {
         us.
       </p>
 
-      <h2>1. What is LegalEasier's SMS Marketing Service?</h2>
+      <h2 className="terms-h">1. What is LegalEasier's SMS Marketing Service?</h2>
       <p>
         LegalEasier offers an SMS marketing service that allows us to send you
         updates, promotions, and reminders via text message related to our legal
@@ -24,7 +24,7 @@ const HelpAndFaqInfo = () => {
         described above and will not be used for any unrelated purposes.
       </p>
 
-      <h2>2. How Do I Subscribe to SMS Marketing?</h2>
+      <h2 className="terms-h">2. How Do I Subscribe to SMS Marketing?</h2>
       <p>
         We do not sell, rent, or lease your personal information (including your
         phone number) to third parties. We may share your phone number with
@@ -40,7 +40,7 @@ const HelpAndFaqInfo = () => {
         storage is 100% secure.
       </p>
 
-      <h2>3. What Information Does LegalEasier Collect?</h2>
+      <h2 className="terms-h">3. What Information Does LegalEasier Collect?</h2>
       <p>
         When you opt-in to receive SMS messages, we collect the following:
       </p>
@@ -59,7 +59,7 @@ const HelpAndFaqInfo = () => {
         communication relevant to our services.
       </p>
 
-      <h2>4. How Will My Information Be Used?</h2>
+      <h2 className="terms-h">4. How Will My Information Be Used?</h2>
       <p>
         Your phone number and consent will be used exclusively to send you SMS
         marketing messages related to our services. We will not share your
@@ -68,14 +68,14 @@ const HelpAndFaqInfo = () => {
         are required to keep your information confidential.
       </p>
 
-      <h2>5. How Often Will I Receive SMS Messages?</h2>
+      <h2 className="terms-h">5. How Often Will I Receive SMS Messages?</h2>
       <p>
         The frequency of messages may vary depending on promotions, service
         updates, and other important communications. You may receive messages
         about special offers, new services, legal document reminders, and more.
       </p>
 
-      <h2>6. Are There Any Charges for SMS Messages?</h2>
+      <h2 className="terms-h">6. Are There Any Charges for SMS Messages?</h2>
       <p>
         LegalEasier does not charge for the SMS messages themselves, but
         standard message and data rates may apply according to your mobile
@@ -83,7 +83,7 @@ const HelpAndFaqInfo = () => {
         any potential costs.
       </p>
 
-      <h2>7. How Do I Opt-Out of SMS Messages?</h2>
+      <h2 className="terms-h">7. How Do I Opt-Out of SMS Messages?</h2>
       <p>
         You can opt-out of receiving SMS marketing messages at any time by
         replying “STOP” to any of the messages you receive. Once you opt-out,
@@ -96,20 +96,20 @@ const HelpAndFaqInfo = () => {
         assistance, please contact us at <em>[insert contact email or phone number]</em>.
       </p>
 
-      <h2>8. Can I Receive SMS Messages if I am Not in the U.S.?</h2>
+      <h2 className="terms-h">8. Can I Receive SMS Messages if I am Not in the U.S.?</h2>
       <p>
         Currently, our SMS marketing service is only available to users within
         the U.S. If you are located outside of the U.S., you may not be able to
         receive SMS marketing messages.
       </p>
 
-      <h2>9. How Do I Update My Phone Number?</h2>
+      <h2 className="terms-h">9. How Do I Update My Phone Number?</h2>
       <p>
         If you change your phone number and wish to continue receiving SMS
         marketing messages, please contact us at <em>[insert contact email or phone number]</em>. We will update your phone number in our system to ensure you continue receiving important updates.
       </p>
 
-      <h2>10. What If I Need More Information About My Data and Privacy?</h2>
+      <h2 className="terms-h">10. What If I Need More Information About My Data and Privacy?</h2>
       <p>
         Your privacy is important to us. For detailed information about how we
         collect, use, and protect your data, please refer to our{" "}
@@ -118,7 +118,7 @@ const HelpAndFaqInfo = () => {
         information.
       </p>
 
-      <h2>11. How Can I Contact LegalEasier for Support?</h2>
+      <h2 className="terms-h">11. How Can I Contact LegalEasier for Support?</h2>
       <p>
         If you have any questions or need assistance with your SMS subscription,
         feel free to reach out to us:

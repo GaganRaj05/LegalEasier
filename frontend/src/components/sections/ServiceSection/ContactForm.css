@@ -11,6 +11,13 @@
   box-sizing: border-box;
   gap: 20px;
 }
+.services-submit-btn {
+  width: 250px;
+  color: white;
+  border: 0;
+  height: 50px;
+  background-color:rgb(45, 105, 194);
+}
 
 .contact-form-info,
 .contact-application {
@@ -22,6 +29,7 @@
 .contact-form-info h1 {
   font-size: 1.8rem;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 a {

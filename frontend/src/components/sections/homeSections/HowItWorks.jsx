@@ -1,6 +1,9 @@
 import "./HowItWorks.css";
 import Button from "../../ui/Buttons";
+import {toast} from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 const HowItWorks = () => {
+  const navigate = useNavigate();
   return (
     <div className="how-it-works">
       <div className="hw-section-head">
@@ -35,7 +38,7 @@ const HowItWorks = () => {
         </div>
       </div>
       <div className="hw-btn">
-        <Button classname="primary-btn hw">
+        <Button classname="primary-btn hw" onClick={()=>toast.error("Feature yet to be added")}>
             Get Your Documents Now
         </Button>
         </div> 

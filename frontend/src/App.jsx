@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import Router from './routes/Router'
+import Router from './routes/Router';
+import { ToastContainer } from 'react-toastify';
+
 function App() {
 
   return (
     <>
-    <Router/>
+      <Router/>
+      <ToastContainer position="top-center" autoClose={3000} />
     </>
   )
 }

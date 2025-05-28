@@ -19,6 +19,9 @@
     height: 100%;
     
 }
+.footer-groups p {
+  cursor: pointer;
+}
 .footer-text {
     color: white;
     margin-top: 20px;
@@ -41,6 +44,9 @@ h3 {
 .mr {
     margin-left: 250px;
     
+}
+.footer-terms p {
+  cursor: pointer;
 }
 @media (max-width:1341px) {
     .logo-footer {
@@ -72,13 +78,13 @@ h3 {
     margin-left: 0;
   }
   .footer  {
-    height: 70vh;
+    height: 100vh;
   }
 }
 
 @media (max-width:900px) {
   .footer {
-    height: 100vh;
+    height: 150vh;
   }
 }
 @media screen and (max-width: 600px) {

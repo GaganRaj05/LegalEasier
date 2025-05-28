@@ -1,6 +1,8 @@
 import "./Footer.css";
-
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const Footer = ()=> {
+    const navigate = useNavigate();
     return (
         <div className="footer">
             <div className="footer-links">
@@ -15,31 +17,34 @@ const Footer = ()=> {
                 </div>  
                 <div className="footer-groups links">
                     <h3>Quick Links</h3>
-                    <p className="footer-text">Home</p>
-                    <p className="footer-text">About</p>
-                    <p className="footer-text">Services</p>
-                    <p className="footer-text">How it Works</p>
-                    <p className="footer-text">Pricing</p>
+                    <p className="footer-text" onClick={()=>navigate('/')}>Home</p>
+                    <p className="footer-text" onClick={()=>toast.error('Feature yet to be added')}>About</p>
+                    <p className="footer-text" onClick={()=>navigate('/legal-easier/services')}>Services</p>
+                    <p className="footer-text" onClick={()=>navigate('/legal-easier/notary-service')}>How it Works</p>
+                    <p className="footer-text" onClick={()=>navigate('/legal-easier/services')}>Pricing</p>
                 </div>
                 <div className="footer-groups">
                     <h3>Services</h3>
-                    <p className="footer-text">Eviction Assistance</p>
-                    <p className="footer-text">Small Claims</p>
-                    <p className="footer-text">
+                    <p className="footer-text" onClick={()=>navigate('/legal-easier/services')}>Eviction Assistance</p>
+                    <p className="footer-text" onClick={()=>navigate('/legal-easier/services')}>Small Claims</p>
+                    <p className="footer-text" onClick={()=>navigate('/legal-easier/services')}>
                         Uncontested Divorce
                     </p>
-                    <p className="footer-text">
+                    <p className="footer-text" onClick={()=>navigate('/legal-easier/services')}>
                         Name Changes
                     </p>
-                    <p className="footer-text">
+                    <p className="footer-text" onClick={()=>navigate('/legal-easier/services')}>
                         Wills & Advance Directives
                     </p>
                 </div>
 
                 <div className="footer-groups ">
                     <h3>Contact Us</h3>
-                    <p className="footer-text">Email:info#legaleasier.org</p>
-                    <p className="footer-text">Phone: (800) 55-1212</p>
+                    <p className="footer-text">
+                        <a href="mailto:info@legaleasier.org">Email:info@legaleasier.org</a>
+                        </p>
+                    <p className="footer-text">
+                        <a href="tel:+1 onClick={()=>navigate('/legal-easier/Terms&Conditions')}5551234567">Phone: (800) 55-1212</a></p>
                     <p className="footer-text">Hours: Monday-Friday, 9am-5pm</p>
                     <p className="footer-text"></p>
                 </div>
@@ -47,9 +52,9 @@ const Footer = ()=> {
             <div className="footer-terms">
                 <p className="terms-text">© 2025 LegalEasier. All rights reserved.
                 </p>
-                 <p className="terms-text mr">Terms of Service</p>
-                 <p className="terms-text">Privacy Policy</p>
-                <p className="terms-text">
+                 <p className="terms-text mr" onClick={()=>navigate('/legal-easier/Terms&Conditions')}>Terms of Service</p>
+                 <p className="terms-text" onClick={()=>navigate('/legal-easier/Privacy-Policy')}>Privacy Policy</p>
+                <p className="terms-text" onClick={()=>navigate('/legal-easier/HelpAndFaq')}>
                     Legal Disclaimer
                 </p>
             </div>

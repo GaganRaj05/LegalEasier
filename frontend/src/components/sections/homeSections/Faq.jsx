@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Faq.css";
 import Button from "../../ui/Buttons";
+import { toast } from "react-toastify";
 
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -60,7 +61,7 @@ const Faq = () => {
         <div className="getting-started-info">
             <h1>Ready to Get Started?</h1>
             <p>Our document specialists are ready to help you with your legal document needs today.</p>
-            <Button classname="primary-btn gs">
+            <Button classname="primary-btn gs" onClick={()=>toast.error("Feature yet to added")}>
                 {"Start Your Document Now ->"}
             </Button>
         </div>

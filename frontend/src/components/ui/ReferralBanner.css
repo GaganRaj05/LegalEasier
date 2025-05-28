@@ -35,6 +35,9 @@
   line-height: 1.8;
 }
 
+.terms-h {
+  text-align: start;
+}
 @media (max-width:545px) {
   .referral-hero {
     height: 60vh;

@@ -1,8 +1,35 @@
 import "./HeroSection.css";
 import Button from "../../ui/Buttons";
+import ContactFormPopup from "../../layout/ContactForm";
+import { useAuth } from "../../../context/AuthContext";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import LoginPopup from "../../layout/Login";
+import SignUpPopup from "../../layout/SignUp";
 const HeroSection = () => {
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const handleClick = (e, btnType) => {
+    if (btnType === "Get Help Now") {
+      console.log(btnType)
+      if (!user) {
+        setIsLoginOpen(true);
+        return;
+      }
+      setIsContactFormOpen(true);
+    } else if (btnType === "Notary"){
+      navigate("/legal-easier/notary-service");
+    }
+  };
+
   return (
-    <section className="hero-section">
+    <>
+        <section className="hero-section">
       <div className="hero-info-container">
         <h1 className="hero-head">
           Legal Forms Done Right.
@@ -12,16 +39,45 @@ const HeroSection = () => {
           Fast, affordable legal document preparation for everyday legal
           matters. Save time and money with our professional services.
         </p>
-        <Button classname="primary-btn hr">Get Help Now</Button>
-        <Button classname="secondary-btn">See How It Works</Button>
+        <Button
+          classname="primary-btn hr"
+          onClick={(e) => handleClick(e, "Get Help Now")}
+        >
+          Get Help Now
+        </Button>
+        <Button classname="secondary-btn" onClick={(e)=>handleClick(e,"Notary")}>See How It Works</Button>
       </div>
       <div className="fall-container">
         <img
           src="https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/Group-2.svg"
           alt="Falling Ball"
-className="falling-image curved-fall"          />
+          className="falling-image curved-fall"
+        />
       </div>
     </section>
+
+      {isLoginOpen && (
+        <LoginPopup
+          onSignUpClick={(e) => {
+            setIsLoginOpen(false);
+            setIsSignUpOpen(true);
+          }}
+          onClose={(e) => setIsLoginOpen(false)}
+        />
+      )}
+      {isSignUpOpen && (
+        <SignUpPopup
+          onLoginClick={(e) => {
+            setIsSignUpOpen(false);
+            setIsLoginOpen(true);
+          }}
+          onClose={(e) => setIsSignUpOpen(false)}
+        />
+      )}
+      {isContactFormOpen && (
+        <ContactFormPopup onClose={() => setIsContactFormOpen(false)} />
+      )}
+    </>
   );
 };
 

@@ -99,3 +99,10 @@
     margin-bottom: 24px;
     font-weight: 600;
 }
+
+@media (max-width:1190px) {
+    .service-cards {
+        width: 200px;
+        height: 250px;
+    }
+}

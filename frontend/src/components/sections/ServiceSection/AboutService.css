@@ -89,6 +89,9 @@
     width: 100%;
     height: 60vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
 .documents-review {
     width: 50%;
@@ -142,4 +145,108 @@
     font-size: 38px;
     font-weight: 600;
     margin-bottom: 35px;
+}
+@media (max-width:1335px) {
+    .debt-settlement {
+        flex-direction: column;
+        height: 900px;
+        justify-content: center;
+        align-items: center;
+    }
+    .debt-img {
+        margin-top: 0;
+    }
+    .debt-settlement div {
+        height: 200px;
+    }
+    .documents {
+        margin: 0;
+        padding: 0;
+    }
+    .documents div:first-child {
+        padding-top: 0;
+    }
+
+    
+}
+
+@media (max-width:1210px) {
+    .about-services {
+        height: 670vh;
+    }
+    .protection {
+        flex-direction: column;
+        height: 600px;
+    }
+    .protection div {
+        width: 100%;
+        height: 50%;
+    }
+    .service-about-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .documents {
+        flex-direction: column;
+        height: 70vh;
+        justify-content: center;
+        align-items: center;
+    }
+    .documents-review {
+        justify-content: start;
+        background-color: aqua;
+    }
+    .sub-div {
+        background-color: black;
+    }
+}
+@media (max-width:864px) {
+    .documents {
+        height: 60vh;
+    }
+}
+@media (max-width:661px) {
+    .about-services {
+        height: 950vh;
+    }
+   .service-cards-container {
+    flex-direction: column;
+    height: 100vh;
+   }
+
+}
+@media (max-width:560px) {
+    .about-services {
+        height: 1450vh;
+    }
+    .protection  {
+        height: 800px;
+    }
+    .service-about-info p {
+        max-width: 300px;
+    }
+    .debt-settlement {
+        height: 1200px;
+    }
+    .debt-img {
+        margin-top: 160px;
+    }
+    .documents-info h1 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width:375px) {
+    .about-services {
+        height: 1500vh;
+    }
+    .debt-settlement {
+        height: 1400px;
+    }
+    .documents {
+        height: 80vh;
+    }
 }

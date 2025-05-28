@@ -115,3 +115,28 @@
 .getting-started-info p {
     width: 350px;
 }
+
+@media (max-width:1047px) {
+    .faqs {
+      height: 190vh;
+    }
+    .getting-started {
+      height: 100vh;
+      width: 100%;
+      flex-direction: column;
+    }
+    .getting-started-info {
+      width: 100%;
+      align-items: center;
+    }
+    .getting-started-img {
+      width: 100%;
+      background-position: center;
+    }
+}
+
+@media (max-width:520px) {
+  .faqs {
+    height: 220vh;
+  }
+}

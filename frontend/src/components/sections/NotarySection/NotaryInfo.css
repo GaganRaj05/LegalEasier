@@ -40,3 +40,88 @@
     font-size: 40px;
     margin-top: 50px;
 }
+
+
+@media (max-width: 1360px) {
+    .notary-info {
+        height: 170vh;
+    }
+  .notary-info-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .notary-info-img,
+  .notary-info-content {
+    width: 100%;
+    height: 300px;
+  }
+
+  .notary-info-content p {
+    width: 90%;
+    margin: 40px auto 0;
+  }
+
+  .join-notary {
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  .notary-cards-container {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .notary-cards {
+    width: 250px;
+    max-width: 300px;
+  }
+}
+@media (max-width:1160px) {
+  .notary-info {
+    height: 200vh;
+  }
+}
+@media (max-width:994px) {
+  .notary-info {
+    height: 210vh;
+  }
+}
+
+@media (max-width: 600px) {
+    .notary-info {
+        height: 270vh;
+    }
+  .notary-head {
+    font-size: 28px;
+    margin-top: 30px;
+  }
+
+  .notary-cards {
+    width: 100%;
+    padding: 16px;
+    height: auto;
+  }
+
+  .notary-cards h1 {
+    font-size: 18px;
+  }
+
+  .notary-cards p {
+    font-size: 14px;
+  }
+
+  .notary-info-content p {
+    font-size: 14px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width:320px) {
+  .notary-info {
+    height: 310vh;
+  }
+    .notary-cards {
+        width:200px
+    }
+}

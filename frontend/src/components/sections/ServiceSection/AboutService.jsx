@@ -118,20 +118,7 @@ const AboutService = () => {
                         Need assistance with settling debts? We prepare the documents to help negotiate favorable terms and bring you peace of mind.
                     </p>
                 </div>
-                <div className="documents-review">
-                    <div className="sub-div">
-                        <h1>Documents Review</h1>
-                        <p>
-                            Let us review your legal documents before you sign. We check for completeness, accuracy, and compliance with applicable laws.
-                        </p>
-                    </div>
-                    <div className="sub-div">
-                        <h1>Consultations</h1>
-                        <p>
-                            Not sure where to start? We offer consultations to understand your specific needs, and we’ll guide you through the process of preparing your documents.
-                        </p>
-                    </div>
-                </div>
+                
             </div>
             <div className="price-offers">
                 <h1>30 Common Document with Price Range</h1>

@@ -34,3 +34,9 @@
   font-size: 1.1rem;
   line-height: 1.8;
 }
+
+@media (max-width:545px) {
+  .referral-hero {
+    height: 60vh;
+  }
+}

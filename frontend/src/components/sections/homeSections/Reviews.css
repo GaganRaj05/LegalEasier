@@ -83,3 +83,44 @@
   color: #ffffff; 
   opacity: 1;
 }
+
+@media (max-width:1335px) {
+  .review-cards {
+    width: 250px;
+  }
+}
+@media (max-width:1110px) {
+  .review-cards {
+    width:200px;
+  }
+}
+@media(max-width:835px) {
+  .review-cards {
+    width: 220px;
+  }
+}
+@media(max-width:760px) {
+  .review-cards {
+    width: 300px;
+  }
+}
+@media(max-width:680px) {
+  .review-cards {
+    width: 250px;
+  }
+}
+@media(max-width:550px) {
+  .review-cards {
+    width: 200px;
+  }
+}
+@media(max-width:475px) {
+  .review-cards {
+    min-width: 400px;
+  }
+}
+@media (max-width:432px) {
+    .review-cards {
+      min-width: 370px;
+    }
+}

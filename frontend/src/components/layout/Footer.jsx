@@ -1,5 +1,4 @@
 import "./Footer.css";
-import Logo from "./company_logo.jpg"
 
 const Footer = ()=> {
     return (

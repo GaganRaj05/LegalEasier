@@ -1,54 +1,94 @@
 .contact-form {
-    width: 100%;
-    height: 70vh;
-    background-image: url("https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/360_F_1134397772_1lkXCDJivhb2gVsSSYoMyMwYPiWgnvUg.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    display: flex;
-}
-a {
-    color: white;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-.contact-form div {
-    width: 50%;
-    height: 100%;
+  width: 100%;
+  min-height: 70vh;
+  background-image: url("https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/360_F_1134397772_1lkXCDJivhb2gVsSSYoMyMwYPiWgnvUg.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  gap: 20px;
 }
 
-.contact-form-info {
-    padding-top: 50px;
-    padding-left: 50px;
-    color: white;
-}
+.contact-form-info,
 .contact-application {
-    padding-top: 50px;
+  flex: 1 1 400px;
+  color: white;
+  padding: 20px;
 }
+
+.contact-form-info h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .contact-application form {
-    height: 100%;
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-application input,
+.contact-application textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+label {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .contact-form {
     flex-direction: column;
-}
-.contact-application form input {
-    height: 40px;
-    width: 400px;
-    margin-top: 15px;
-}
-.contact-application form label {
-    margin-top: 14px;
-}
-.contact-application form textarea {
-    width: 400px;
-    max-height: 200px;
-    min-height: 200px;
-}
-.contact-application form * {
-    margin-left: 40px;
-}
-.contact-form-info  {
+    align-items: center;
     text-align: center;
-    padding-top: 50px;
+  }
+
+  .contact-form-info,
+  .contact-application {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .contact-form-info h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width:560px) {
+  .contact-form-info {
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 20px;
+  }
+  .contact-application form input {
+    width: 300px;
+  }
+  .contact-application form textarea {
+    width: 300px;
+  }
+  .contact-application {
+    padding: 0;
+  }
 }

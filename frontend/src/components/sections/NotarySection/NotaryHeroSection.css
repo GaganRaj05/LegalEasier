@@ -56,3 +56,60 @@
   font-size: 1.1rem;
   color: #ddd;
 }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .notary-content {
+    max-width: 600px;
+  }
+
+  .notary-title {
+    font-size: 2rem;
+  }
+
+  .notary-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .notary-content {
+    max-width: 90%;
+  }
+
+  .notary-title {
+    font-size: 1.6rem;
+  }
+
+  .notary-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .notary-description {
+    font-size: 0.95rem;
+  }
+
+  .notary-subtitle::before,
+  .notary-subtitle::after {
+    width: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notary-title {
+    font-size: 1.4rem;
+  }
+
+  .notary-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .notary-description {
+    font-size: 0.9rem;
+  }
+
+  .notary-subtitle::before,
+  .notary-subtitle::after {
+    width: 20px;
+  }
+}

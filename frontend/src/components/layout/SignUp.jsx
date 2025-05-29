@@ -125,7 +125,8 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
             />
-            <button type="submit" className="submit-btn">Verify OTP</button>
+                        <button type="submit" className="submit-btn" disabled={isLoading}>{isLoading ? <ClipLoader size={20} color="#333"/> :"Verify OTP"}</button>
+
           </form>
         )}
 
@@ -166,7 +167,7 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
               value={formData.confirmPassword}
               onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
             />
-            <button type="submit" className="submit-btn">Register</button>
+                        <button type="submit" className="submit-btn" disabled={isLoading}>{isLoading ? <ClipLoader size={20} color="#333"/> :"Sign up"}</button>
           </form>
         )}
         <p style={{marginTop:"10px"}}>Already have an Account? <a className='redirect' href="" onClick={(e)=>{e.preventDefault(); onLoginClick();}}>Login</a></p>

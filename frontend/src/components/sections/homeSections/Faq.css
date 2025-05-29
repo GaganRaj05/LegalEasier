@@ -140,3 +140,9 @@
     height: 220vh;
   }
 }
+
+@media (max-width:320px) {
+    .getting-started-info p {
+      width: 200px;
+    }
+}

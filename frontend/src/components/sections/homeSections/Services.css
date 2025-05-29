@@ -121,3 +121,8 @@
       padding-left: 110px;
     }
 }
+@media (max-width:320px) {
+  .cards-container {
+    padding-left: 50px;
+  }
+}

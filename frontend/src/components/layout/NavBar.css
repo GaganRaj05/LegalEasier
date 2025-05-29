@@ -59,25 +59,77 @@ body, * {
 }
 
 
+/* Add these to your existing NavBar.css */
+
+.mobile-hidden {
+  display: none !important;
+}
+
+.mobile-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 20px;
+  color: #333; /* Adjust to match your design */
+  display: none;
+}
+
+.mobile-menu {
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 999;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu li {
+  padding: 15px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.mobile-menu li:hover {
+  background-color: #f5f5f5;
+}
+
+.mobile-menu li button {
+  width: 80%;
+  margin: 10px auto;
+}
+
+@media (max-width: 1030px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .logo-group {
+    flex-grow: 1;
+  }
+}
 @media (max-width: 900px) {
   .navbar-container {
     height: auto;
   }
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+ 
 
   .nav-groups {
-    width: 100%;
     justify-content: center;
     margin-bottom: 10px;
     gap: 10px;
   }
 
   .logo {
+    margin-top: 15px;
     width: 180px;
-    margin-bottom: 10px;
     margin-left: 50px;
   }
 

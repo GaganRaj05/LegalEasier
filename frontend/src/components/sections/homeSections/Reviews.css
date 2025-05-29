@@ -1,126 +1,183 @@
 .Reviews {
   background-color: #1f1f1f;
-  height: 75vh;
+  min-height: 95vh; /* Changed from fixed height */
   width: 100%;
-  padding: 20px 0;
+  padding: 40px 0; /* Increased padding */
+  display: flex;
+  flex-direction: column;
 }
 
 .reviews-head {
   width: 100%;
-  height: 25vh;
+  min-height: 25vh; /* Changed from fixed height */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: white;
+  padding: 0 20px; /* Added padding */
+  box-sizing: border-box;
 }
 
 .reviews-head h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsive font size */
   margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
 .reviews-head p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem); /* Responsive font size */
   max-width: 600px;
+  line-height: 1.5;
 }
 
 .reviews-container {
-  height: 50vh;
+  height: auto; /* Changed from fixed height */
   width: 90%;
-  margin: 0 auto;
+  max-width: 1200px; /* Added max-width */
+  margin: 20px auto 0; /* Adjusted margin */
+  padding: 0 10px; /* Added padding */
+  box-sizing: border-box;
 }
 
 .review-slide {
   padding: 10px;
+  box-sizing: border-box;
 }
 
-.slick-dots li button:before {
-  color: white;
-}
-
-.slick-dots li.slick-active button:before {
-  color: white;
-}
-
-.slick-prev:before,
-.slick-next:before {
-  color: white;
-}
-
+/* Review Cards */
 .review-cards {
   background: white;
   border-radius: 8px;
   padding: 20px;
-  height: 200px;
-  width: 300px;
+  height: auto; /* Changed from fixed height */
+  min-height: 200px; /* Minimum height */
+  width: 100%; /* Changed from fixed width */
+  max-width: 300px; /* Maximum width */
+  margin: 0 auto; /* Center cards */
   display: flex !important;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.review-cards:hover {
+  transform: translateY(-5px);
+}
+
+.review-cards p {
+  font-style: italic;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-size: clamp(0.9rem, 1.5vw, 1rem); /* Responsive font size */
 }
 
 .review-author {
-  margin-top: 1px;
+  margin-top: auto; /* Pushes to bottom */
 }
 
 .review-author strong {
   display: block;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 1.5vw, 1.1rem); /* Responsive font size */
 }
 
 .review-author span {
   color: #666;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem); /* Responsive font size */
 }
+
+/* Slick Slider Customization */
+.slick-dots {
+  bottom: -30px;
+}
+
 .slick-dots li button:before {
-  color: #ffffff;  
+  color: #ffffff;
   opacity: 0.5;
   font-size: 10px;
 }
 
 .slick-dots li.slick-active button:before {
-  color: #ffffff; 
+  color: #ffffff;
   opacity: 1;
 }
 
-@media (max-width:1335px) {
+.slick-prev:before,
+.slick-next:before {
+  color: white;
+  font-size: 24px;
+}
+
+.slick-prev {
+  left: -35px;
+}
+
+.slick-next {
+  right: -35px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .Reviews {
+    min-height: auto;
+    padding: 30px 0;
+  }
+  
+  .reviews-head {
+    min-height: auto;
+    padding-bottom: 20px;
+  }
+  
   .review-cards {
-    width: 250px;
+    padding: 15px;
+    min-height: 180px;
   }
 }
-@media (max-width:1110px) {
-  .review-cards {
-    width:200px;
+
+@media (max-width: 768px) {
+  .reviews-container {
+    width: 95%;
+  }
+  
+  .slick-prev {
+    left: -25px;
+  }
+  
+  .slick-next {
+    right: -25px;
   }
 }
-@media(max-width:835px) {
-  .review-cards {
-    width: 220px;
+
+@media (max-width: 480px) {
+  .Reviews {
+    padding: 20px 0;
+  }
+  
+  .reviews-head h1 {
+    font-size: 1.5rem;
+  }
+  
+  .reviews-head p {
+    font-size: 1rem;
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 18px;
+  }
+  
+  .slick-prev {
+    left: -15px;
+  }
+  
+  .slick-next {
+    right: -15px;
   }
 }
-@media(max-width:760px) {
-  .review-cards {
-    width: 300px;
+@media (max-width:320px) {
+  .slick-track {
+    width: 100%;
   }
-}
-@media(max-width:680px) {
-  .review-cards {
-    width: 250px;
-  }
-}
-@media(max-width:550px) {
-  .review-cards {
-    width: 200px;
-  }
-}
-@media(max-width:475px) {
-  .review-cards {
-    min-width: 400px;
-  }
-}
-@media (max-width:432px) {
-    .review-cards {
-      min-width: 370px;
-    }
 }

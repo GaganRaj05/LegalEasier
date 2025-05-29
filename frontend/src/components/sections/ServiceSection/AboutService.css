@@ -202,6 +202,9 @@
     .sub-div {
         background-color: black;
     }
+    .about-service-cards p{
+        font-size: 15px;
+    }
 }
 @media (max-width:980px) {
     .documents {
@@ -209,6 +212,9 @@
     }
     .about-services {
         height: 870vh;
+    }
+    .about-service-cards p{
+        font-size: 11px;
     }
 }
 @media (max-width:661px) {
@@ -242,7 +248,7 @@
     }
 }
 
-@media (max-width:375px) {
+@media (max-width:387px) {
     .about-services {
         height: 1500vh;
     }
@@ -251,6 +257,9 @@
     }
     .documents {
         height: 80vh;
+    }
+    .price-container {
+        margin-top: 100px;
     }
 }
 @media (max-width:360px) {

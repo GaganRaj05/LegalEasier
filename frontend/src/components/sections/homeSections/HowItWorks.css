@@ -61,9 +61,18 @@
     justify-content: center;
     align-items: center;
 }
-@media (max-width:442px) {
+@media (max-width:542px) {
     .process-text {
         max-width: 300px;
+    }
+    .how-it-works  {
+        height: 100vh;
+    }
+    .info-cards-container {
+        margin-top: 50px;
+    }
+    .hw-btn {
+        margin-top: 100px;
     }
 }
 @media (max-width:320px) {

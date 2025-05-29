@@ -12,6 +12,9 @@ body, * {
   height: 70px;
   z-index: 1000;
   background-color: white;
+  position: sticky;
+  top: -5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
@@ -59,7 +62,6 @@ body, * {
 }
 
 
-/* Add these to your existing NavBar.css */
 
 .mobile-hidden {
   display: none !important;
@@ -71,7 +73,7 @@ body, * {
   cursor: pointer;
   padding: 10px;
   margin-right: 20px;
-  color: #333; /* Adjust to match your design */
+  color: #333; 
   display: none;
 }
 

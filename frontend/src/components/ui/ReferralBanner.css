@@ -42,4 +42,10 @@
   .referral-hero {
     height: 60vh;
   }
+  .referral-hero h1 {
+    font-size: 20px;
+  }
+  .referral-hero p {
+    font-size: 15px;
+  }
 }

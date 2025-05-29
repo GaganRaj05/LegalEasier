@@ -100,3 +100,14 @@ label {
     padding: 0;
   }
 }
+@media (max-width:320px) {
+    .contact-form-info a{
+      font-size: 18px;
+    }
+    .contact-application form input {
+      width: 250px;
+    }
+    .contact-application form textarea {
+      width: 250px;
+    }
+}

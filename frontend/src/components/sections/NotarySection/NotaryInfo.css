@@ -84,13 +84,13 @@
 }
 @media (max-width:994px) {
   .notary-info {
-    height: 210vh;
+    height: 170vh;
   }
 }
 
 @media (max-width: 600px) {
     .notary-info {
-        height: 270vh;
+        height: 260vh;
     }
   .notary-head {
     font-size: 28px;

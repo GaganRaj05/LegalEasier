@@ -43,13 +43,11 @@
 }
 
 @media (max-width:1203px) {
-    .primary-btn {
-        margin-left: 50px;
-        height: 40px;
-        width: 120px;
-        font-size: 10px;
-    }   
-    .nl {
+    
+    .hr {
+        width: 200px;
+        height: 50px;
+        font-size: 15px;
     }
 }
 @media (max-width:1192px) {
@@ -59,10 +57,9 @@
     
    
 }
-@media (max-width:900px) {
-    .primary-btn {
-        padding: 0;
-        margin-right: 50px;
+@media (max-width:1000px) {
+    .hr {
+        margin-top: 50px;
     }
 }
 @media(max-width:750px) {

@@ -8,7 +8,7 @@ const contactRoutes = require('./routes/contact');
 const cookieParser = require('cookie-parser');
 const cors = require('cors')
 const app = express()
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(cors({
     origin:process.env.FRONTEND_URL,
     credentials:true

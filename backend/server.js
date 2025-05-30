@@ -6,20 +6,21 @@ const connectToDb = require('./config/db');
 const authRouter = require('./routes/auth');
 const contactRoutes = require('./routes/contact');
 const cookieParser = require('cookie-parser');
+const notaryRoutes = require('./routes/notary')
 const cors = require('cors')
 const app = express()
 app.use(cookieParser());
 app.use(cors({
-    origin:process.env.FRONTEND_URL,
+    origin:[process.env.FRONTEND_URL,'http://localhost:5173'],
     credentials:true
 }))
 app.use(express.json())
 app.use(helmet());
 app.use(morgan('dev'));
 
+app.use('/app/notary', notaryRoutes);
 app.use('/app/contact',contactRoutes);
 app.use("/app/auth",authRouter);
-
 
 
 connectToDb(process.env.MONGODB_URL);

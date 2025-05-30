@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import './SignUpPopup.css';
-import {ClipLoader} from "react-spinners"
-import { getOtp,validateOTP,signUp } from '../../services/auth';
-import { toast } from 'react-toastify';
+import React, { useState, useEffect } from "react";
+import "./SignUpPopup.css";
+import { ClipLoader } from "react-spinners";
+import { getOtp, validateOTP, signUp } from "../../services/auth";
+import { toast } from "react-toastify";
 
 const SignUpPopup = ({ onClose, onLoginClick }) => {
   const [fadeIn, setFadeIn] = useState(false);
   const [step, setStep] = useState(1);
-  const [email, setEmail] = useState('');
-  const [otp, setOtp] = useState('');
-  const [isLoading,setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    address: '',
-    username: '',
-    password: '',
-    confirmPassword: ''
+    name: "",
+    address: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
   });
 
   useEffect(() => {
@@ -32,15 +32,15 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
     setIsLoading(true);
     const response = await getOtp(email);
     setIsLoading(false);
-    console.log(response)
-    if(response?.success ) {
+    console.log(response);
+    if (response?.success) {
       toast.success("An otp has been successfully to your email id");
-    }
-    else if(response?.error?.msg === "Account exists, please use a different email ") {
+    } else if (
+      response?.error?.msg === "Account exists, please use a different email "
+    ) {
       toast.error("Account exists, Please login");
       return;
-    }
-    else {
+    } else {
       toast.error("An unknown network error has occured");
       return;
     }
@@ -48,59 +48,62 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
   };
 
   const handleVerifyOTP = async (e) => {
-      e.preventDefault();
-      const data = {
-        email,
-        otp
-      }
-      const response = await validateOTP(data);
-      if(response?.success) {
-        toast.success("Email verified successfully");
-      }
-      else if(response?.error?.msg === "Incorrect otp entered") {
-        toast.error("Incorrect otp entered");
-        return;
-      }
-      else {
-        toast.error("An unknown network error has occured, Please try again in some time");
-        return;
-      }
+    e.preventDefault();
+    const data = {
+      email,
+      otp,
+    };
+    const response = await validateOTP(data);
+    if (response?.success) {
+      toast.success("Email verified successfully");
+    } else if (response?.error?.msg === "Incorrect otp entered") {
+      toast.error("Incorrect otp entered");
+      return;
+    } else {
+      toast.error(
+        "An unknown network error has occured, Please try again in some time"
+      );
+      return;
+    }
 
-      setStep(3);
-    
+    setStep(3);
   };
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-    if(formData.password !== formData.confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       toast.error("Passwords do not match");
       return;
     }
     const data = {
       email,
-      user_name:formData.username,
-      password:formData.password,
-      address:formData.address,
-      name:formData.name
-    }
+      user_name: formData.username,
+      password: formData.password,
+      address: formData.address,
+      name: formData.name,
+    };
     const response = await signUp(data);
-    if(response?.success) {
+    if (response?.success) {
       toast.success("Account created successfully, Please login");
       onClose();
-    }
-    else if(response?.error?.msg === "Username taken please enter a new one") {
+    } else if (
+      response?.error?.msg === "Username taken please enter a new one"
+    ) {
       toast.error("Username taken, Please enter a new one");
-    }
-    else if(response?.error) {
-      toast.error("An unknown network error has occured, Please try again later");
+    } else if (response?.error) {
+      toast.error(
+        "An unknown network error has occured, Please try again later"
+      );
       return;
     }
   };
 
   return (
-<div className="signup-popup-overlay">
-  <div className={`signup-popup-box ${fadeIn ? 'fade-in' : 'fade-out'}`}>
-        <button className="close-btn" onClick={closePopup}>×</button>
+    <div className="signup-popup-overlay">
+      <div className={`signup-popup-box ${fadeIn ? "fade-in" : "fade-out"}`}>
+        <button className="close-btn" onClick={closePopup}>
+          ×
+        </button>
         <h2>Sign Up</h2>
 
         {step === 1 && (
@@ -112,7 +115,9 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button type="submit" className="submit-btn" disabled={isLoading}>{isLoading ? <ClipLoader size={20} color="#333"/> :"Send OTP"}</button>
+            <button type="submit" className="submit-btn" disabled={isLoading}>
+              {isLoading ? <ClipLoader size={20} color="#333" /> : "Send OTP"}
+            </button>
           </form>
         )}
 
@@ -125,8 +130,9 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
             />
-                        <button type="submit" className="submit-btn" disabled={isLoading}>{isLoading ? <ClipLoader size={20} color="#333"/> :"Verify OTP"}</button>
-
+            <button type="submit" className="submit-btn" disabled={isLoading}>
+              {isLoading ? <ClipLoader size={20} color="#333" /> : "Verify OTP"}
+            </button>
           </form>
         )}
 
@@ -137,40 +143,64 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
               placeholder="Full Name"
               required
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
             />
             <input
               type="text"
               placeholder="Address"
               required
               value={formData.address}
-              onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, address: e.target.value })
+              }
             />
             <input
               type="text"
               placeholder="Username"
               required
               value={formData.username}
-              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, username: e.target.value })
+              }
             />
             <input
               type="password"
               placeholder="Password"
               required
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
             />
             <input
               type="password"
               placeholder="Confirm Password"
               required
               value={formData.confirmPassword}
-              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, confirmPassword: e.target.value })
+              }
             />
-                        <button type="submit" className="submit-btn" disabled={isLoading}>{isLoading ? <ClipLoader size={20} color="#333"/> :"Sign up"}</button>
+            <button type="submit" className="submit-btn" disabled={isLoading}>
+              {isLoading ? <ClipLoader size={20} color="#333" /> : "Sign up"}
+            </button>
           </form>
         )}
-        <p style={{marginTop:"10px"}}>Already have an Account? <a className='redirect' href="" onClick={(e)=>{e.preventDefault(); onLoginClick();}}>Login</a></p>
+        <p style={{ marginTop: "10px" }}>
+          Already have an Account?{" "}
+          <a
+            className="redirect"
+            href=""
+            onClick={(e) => {
+              e.preventDefault();
+              onLoginClick();
+            }}
+          >
+            Login
+          </a>
+        </p>
       </div>
     </div>
   );

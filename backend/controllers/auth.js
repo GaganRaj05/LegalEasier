@@ -1,8 +1,11 @@
 const User = require('../models/User');
 const {sendMail} = require('../utils/email');
-const OTP = require('../models/Otp');
 const bcrypt = require('bcryptjs');
-const jsonwebtoken = require('jsonwebtoken')
+const jsonwebtoken = require('jsonwebtoken');
+const Redis = require('ioredis');
+const { emailLimiter } = require('../utils/limiters');
+const redis = new Redis(process.env.REDIS_URL);
+
 
 const handleSignIn = async(req, res)=> {
     try {
@@ -69,13 +72,13 @@ const getOtp = async(req, res) => {
         const userExists = await User.findOne({email});
         if(userExists) return res.status(401).json({success:false,msg:"Account exists, please use a different email "});
         const otp = Math.floor(100000 + Math.random() * 900000);
-        await sendMail(email,otp);
-        await OTP.create({
-            email,
-            otp
-        })
-        return res.status(200).json({success:true, msg:"Otp sent successfully"});
 
+        const allowed = await emailLimiter(email);
+        if(!allowed) return res.status(429).json({succcess:false, msg:"To many otp requests try again in few minutes"});
+
+        await sendMail(email,otp);
+        await redis.set(`otp:${email}`,otp,'EX',300);
+        return res.status(200).json({success:true, msg:"Otp sent successfully"});
     }
     catch(err) {
         console.log(err.message);
@@ -89,9 +92,14 @@ const validateOTP = async(req, res)=> {
         console.log(req.body);
         const {email, otp} = req.body;
 
-        const otpTrue = await OTP.findOne({otp});
-        if(!otpTrue) return res.status(400).json({success:false, msg:"Incorrect otp entered"});
-
+        const savedOtp = await redis.get(`otp:${email}`);
+        if(!savedOtp) {
+            return res.status(400).json("Otp expired, please request a new one")
+        }
+        if(savedOtp !== otp) {
+            return res.status(400).json({success:false, msg:"Incorrect otp entered"});
+        }
+        await redis.del(`otp:${email}`)
         return res.status(200).json({success:true, msg:"Email verified successfully"});
 
     }

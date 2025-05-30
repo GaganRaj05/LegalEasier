@@ -126,7 +126,7 @@ const HelpAndFaqInfo = () => {
       <p>
         <strong>Email:</strong> contact@legaleasier.org
         <br />
-        <strong>Phone:</strong> 407.891.5333
+        <strong>Phone:</strong> +1 407.891.5333
       </p>
     </section>
   );

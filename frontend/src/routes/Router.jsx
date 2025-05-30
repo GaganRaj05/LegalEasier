@@ -1,4 +1,4 @@
-import {createBrowserRouter} from 'react-router-dom';
+import {createBrowserRouter, ScrollRestoration} from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 import Home from '../pages/Home';
 import Services from '../pages/Services';

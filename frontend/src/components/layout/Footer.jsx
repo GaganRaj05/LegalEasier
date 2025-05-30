@@ -41,10 +41,10 @@ const Footer = ()=> {
                 <div className="footer-groups ">
                     <h3>Contact Us</h3>
                     <p className="footer-text">
-                        <a href="mailto:info@legaleasier.org">Email:info@legaleasier.org</a>
+                        <a href="mailto:contact@legaleasier.org">Email:contact@legaleasier.org</a>
                         </p>
                     <p className="footer-text">
-                        <a href="tel:+1 onClick={()=>navigate('/legal-easier/Terms&Conditions')}5551234567">Phone: (800) 55-1212</a></p>
+                        <a href="tel:+1 407-891-5333">Phone: 407-891-5333</a></p>
                     <p className="footer-text">Hours: Monday-Friday, 9am-5pm</p>
                     <p className="footer-text"></p>
                 </div>
@@ -55,7 +55,7 @@ const Footer = ()=> {
                  <p className="terms-text mr" onClick={()=>navigate('/legal-easier/Terms&Conditions')}>Terms of Service</p>
                  <p className="terms-text" onClick={()=>navigate('/legal-easier/Privacy-Policy')}>Privacy Policy</p>
                 <p className="terms-text" onClick={()=>navigate('/legal-easier/HelpAndFaq')}>
-                    Legal Disclaimer
+                    Help and FAQ
                 </p>
             </div>
         </div>

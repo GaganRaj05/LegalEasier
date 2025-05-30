@@ -78,6 +78,9 @@ label {
     width: 100%;
     max-width: 500px;
   }
+  .contact-application label {
+    text-align: start;
+  }
 
   .contact-form-info h1 {
     font-size: 1.5rem;

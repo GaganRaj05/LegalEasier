@@ -38,8 +38,8 @@ const ContactForm = () => {
     <section className="contact-form">
       <div className="contact-form-info">
         <h1>CONTACT US NOW FOR A FREE, FRIENDLY EVALUATION OF YOUR CLAIM!</h1>
-        <h2><a href="mailto:Info@legaleasier.com">Info@legaleasier.com</a></h2>
-        <h2><a href="tel:14078915333">1 407-891-5333</a></h2>
+        <h2><a href="mailto:contact@legaleasier.org">contact@legaleasier.org</a></h2>
+        <h2><a href="tel:+1 407-891-5333">+1 407-891-5333</a></h2>
         <h2><a href="#">Charlotte, NC, USA</a></h2>
       </div>
       <div className="contact-application">

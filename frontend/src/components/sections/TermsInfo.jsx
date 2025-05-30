@@ -137,8 +137,8 @@ By subscribing to our SMS marketing, you agree to:
         If you have any questions or concerns about these Terms, please contact
         us at:
       </p>
-      <h2>LegalEasier</h2>
-      <p>Contact@legaleasier.org 407.891.5333</p>
+      <p>contact@legaleasier.org </p>
+        <p>+1 407.891.5333</p>
     </section>
   );
 };

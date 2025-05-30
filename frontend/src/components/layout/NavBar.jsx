@@ -65,7 +65,7 @@ const NavBar = () => {
           <li onClick={(e) => handleClick(e, "Home")}>Home</li>
           <li onClick={(e) => handleClick(e, "About")}>About</li>
           <li onClick={(e) => handleClick(e, "services")}>Services</li>
-          <li onClick={(e) => handleClick(e, "Notary")}>How it Works</li>
+          <li onClick={(e) => handleClick(e, "Notary")}>Notary Referral</li>
           <li onClick={(e) => handleClick(e, "About")}>Pricing</li>
         </ul>
 
@@ -95,7 +95,7 @@ const NavBar = () => {
             <li onClick={(e) => handleClick(e, "Home")}>Home</li>
             <li onClick={(e) => handleClick(e, "About")}>About</li>
             <li onClick={(e) => handleClick(e, "services")}>Services</li>
-            <li onClick={(e) => handleClick(e, "Notary")}>How it Works</li>
+            <li onClick={(e) => handleClick(e, "Notary")}>Notary Referral</li>
             <li onClick={(e) => handleClick(e, "About")}>Pricing</li>
             <li>
               <Button classname="primary-btn" onClick={(e) => handleClick(e, "Login")}>

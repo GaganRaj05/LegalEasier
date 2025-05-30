@@ -74,7 +74,7 @@ const PrivacyPolicyInfo = () => {
       </p>
       <p>
         If you have any issues opting out or need further assistance, please
-        contact us at [insert contact email or phone number].
+        contact us at <a href="mailto:contact@legaleasier.org">contact@legaleasier.org</a>.
       </p>
 
       <h2 className="terms-h">5. Changes to This Privacy Policy</h2>
@@ -93,9 +93,9 @@ const PrivacyPolicyInfo = () => {
       <p>
         <strong>LegalEasier</strong>
         <br />
-        Contact@LegalEasier.org
+        contact@LegalEasier.org
         <br />
-        407.891.333
+        +1 407 891 5333
       </p>
     </section>
   );

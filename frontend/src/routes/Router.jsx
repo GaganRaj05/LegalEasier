@@ -6,6 +6,7 @@ import Notary from "../pages/Notary";
 import TermsAndConditions from '../pages/TermsAndConditions';
 import HelpAndFaq from '../pages/HelpAndFaq';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
+import Contact from '../pages/Contact';
 const routes = createBrowserRouter([
     {
         path: '/',
@@ -30,6 +31,10 @@ const routes = createBrowserRouter([
     {
         path:"legal-easier/Privacy-Policy",
         element:<PrivacyPolicy/>
+    },
+    {
+        path:'legal-easier/contact-us',
+        element:<Contact/>
     }
 ])
 

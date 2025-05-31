@@ -25,7 +25,11 @@ const NavBar = () => {
       navigate("/");
     } else if (pageType === "Notary") {
       navigate("/legal-easier/notary-service");
-    } else if (pageType === "Login") {
+    }
+    else if(pageType === "Contact") {
+      navigate('/legal-easier/contact-us')
+    }
+    else if (pageType === "Login") {
       if (!user) {
         setIsLoginOpen(true);
         return;
@@ -34,7 +38,7 @@ const NavBar = () => {
     } else {
       toast.error("Feature yet to be added");
     }
-    setIsMobileMenuOpen(false); // Close mobile menu after click
+    setIsMobileMenuOpen(false); 
   };
 
   useEffect(() => {
@@ -60,16 +64,14 @@ const NavBar = () => {
           </li>
         </ul>
 
-        {/* Desktop Navigation */}
         <ul className={`nav-groups nl ${isMobileView ? "mobile-hidden" : ""}`}>
           <li onClick={(e) => handleClick(e, "Home")}>Home</li>
-          <li onClick={(e) => handleClick(e, "About")}>About</li>
           <li onClick={(e) => handleClick(e, "services")}>Services</li>
           <li onClick={(e) => handleClick(e, "Notary")}>Notary Referral</li>
-          <li onClick={(e) => handleClick(e, "About")}>Pricing</li>
+          <li onClick={(e) => handleClick(e, "Blog")}>Blog</li>
+          <li onClick={(e) => handleClick(e, "Contact")}>Contact Us</li>
         </ul>
 
-        {/* Desktop Button */}
         <ul className={`nav-groups ${isMobileView ? "mobile-hidden" : ""}`}>
           <li>
             <Button classname="primary-btn" onClick={(e) => handleClick(e, "Login")}>
@@ -78,7 +80,6 @@ const NavBar = () => {
           </li>
         </ul>
 
-        {/* Mobile Menu Button */}
         {isMobileView && (
           <button
             className="mobile-menu-btn"

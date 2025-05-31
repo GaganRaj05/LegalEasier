@@ -29,6 +29,9 @@ const NavBar = () => {
     else if(pageType === "Contact") {
       navigate('/legal-easier/contact-us')
     }
+    else if(pageType === "Blog" ) {
+      navigate('/legal-easier/blog-page');
+    }
     else if (pageType === "Login") {
       if (!user) {
         setIsLoginOpen(true);
@@ -93,11 +96,11 @@ const NavBar = () => {
       {isMobileView && isMobileMenuOpen && (
         <div className="mobile-menu">
           <ul>
-            <li onClick={(e) => handleClick(e, "Home")}>Home</li>
-            <li onClick={(e) => handleClick(e, "About")}>About</li>
-            <li onClick={(e) => handleClick(e, "services")}>Services</li>
-            <li onClick={(e) => handleClick(e, "Notary")}>Notary Referral</li>
-            <li onClick={(e) => handleClick(e, "About")}>Pricing</li>
+          <li onClick={(e) => handleClick(e, "Home")}>Home</li>
+          <li onClick={(e) => handleClick(e, "services")}>Services</li>
+          <li onClick={(e) => handleClick(e, "Notary")}>Notary Referral</li>
+          <li onClick={(e) => handleClick(e, "Blog")}>Blog</li>
+          <li onClick={(e) => handleClick(e, "Contact")}>Contact Us</li>
             <li>
               <Button classname="primary-btn" onClick={(e) => handleClick(e, "Login")}>
                 Get Help Now

@@ -7,6 +7,7 @@ import TermsAndConditions from '../pages/TermsAndConditions';
 import HelpAndFaq from '../pages/HelpAndFaq';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import Contact from '../pages/Contact';
+import Blog from '../pages/Blog';
 const routes = createBrowserRouter([
     {
         path: '/',
@@ -35,6 +36,10 @@ const routes = createBrowserRouter([
     {
         path:'legal-easier/contact-us',
         element:<Contact/>
+    },
+    {
+        path:'legal-easier/blog-page',
+        element:<Blog/>
     }
 ])
 

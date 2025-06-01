@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginPopup from "../../layout/Login";
 import SignUpPopup from "../../layout/SignUp";
+import Leads from "../../ui/Leads";
 const HeroSection = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -13,6 +14,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isBotOpen, setIsBotOpen] = useState(true);
 
   const handleClick = (e, btnType) => {
     if (btnType === "Get Help Now") {
@@ -77,6 +79,8 @@ const HeroSection = () => {
       {isContactFormOpen && (
         <ContactFormPopup onClose={() => setIsContactFormOpen(false)} />
       )}
+            {isBotOpen && <Leads onClose={()=>{setIsBotOpen(false)}}/>}
+
     </>
   );
 };

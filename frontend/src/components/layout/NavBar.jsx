@@ -18,7 +18,6 @@ const NavBar = () => {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
-  const [isBotOpen, setIsBotOpen] = useState(true);
 
   const handleClick = (e, pageType) => {
     if (pageType === "services") {
@@ -133,7 +132,6 @@ const NavBar = () => {
       {isContactFormOpen && (
         <ContactFormPopup onClose={() => setIsContactFormOpen(false)} />
       )}
-      {isBotOpen && <Leads onClose={()=>{setIsBotOpen(false)}}/>}
     </div>
   );
 };

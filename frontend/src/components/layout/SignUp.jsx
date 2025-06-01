@@ -3,6 +3,8 @@ import "./SignUpPopup.css";
 import { ClipLoader } from "react-spinners";
 import { getOtp, validateOTP, signUp } from "../../services/auth";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 
 const SignUpPopup = ({ onClose, onLoginClick }) => {
   const [fadeIn, setFadeIn] = useState(false);
@@ -16,8 +18,9 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
     username: "",
     password: "",
     confirmPassword: "",
+    acceptedTerms: false
   });
-
+  const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => setFadeIn(true), 10);
   }, []);
@@ -115,7 +118,43 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button type="submit" className="submit-btn" disabled={isLoading}>
+<div className="terms-checkbox" style={{ margin: "15px 0" }}>
+  <input
+    type="checkbox"
+    id="terms"
+    name="acceptedTerms"
+    checked={formData.acceptedTerms}
+    onChange={(e) =>
+      setFormData({ ...formData, acceptedTerms: e.target.checked })
+    }
+    required
+  />
+  <label htmlFor="terms" style={{ marginLeft: "8px", fontSize: "14px" }}>
+    I accept the{" "}
+    <a 
+      className="terms-conditions" 
+      href="/legal-easier/Terms&Conditions" 
+      onClick={(e) => {
+        e.preventDefault();
+        navigate('/legal-easier/Terms&Conditions');
+      }}
+    >
+      Terms and Conditions
+    </a>{" "}
+    and{" "}
+    <a 
+      className="terms-conditions" 
+      href="/legal-easier/Privacy-Policy"
+      onClick={(e) => {
+        e.preventDefault();
+        navigate('/legal-easier/Privacy-Policy');
+      }}
+    >
+      Privacy Policy
+    </a>
+    .
+  </label>
+</div>              <button type="submit" className="submit-btn" disabled={isLoading}>
               {isLoading ? <ClipLoader size={20} color="#333" /> : "Send OTP"}
             </button>
           </form>

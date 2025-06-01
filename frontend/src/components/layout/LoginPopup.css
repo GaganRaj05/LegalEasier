@@ -82,6 +82,14 @@ input {
 
 
 
+.terms-conditions {
+  color:#0c6bb1;
+  font-weight: bold;
+}
+.terms-conditions:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 480px) {
   .popup-box {
     padding: 1.5rem;

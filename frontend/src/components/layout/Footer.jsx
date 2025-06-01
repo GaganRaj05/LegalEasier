@@ -1,6 +1,8 @@
 import "./Footer.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa"; 
+
 const Footer = ()=> {
     const navigate = useNavigate();
     return (
@@ -14,6 +16,18 @@ const Footer = ()=> {
                     <p className="footer-text">
                         Not a law firm. We do not provide legal advice.
                     </p>
+                                        <div className="social-icons">
+                        <a href="https://www.instagram.com/legal.easier/" target="_blank" rel="noopener noreferrer">
+                            <FaInstagram className="social-icon" />
+                        </a>
+                        <a href="https://youtube.com/@legaleasier?si=rnyAkpRwAzCNqUnf" target="_blank" rel="noopener noreferrer">
+                            <FaYoutube className="social-icon" />
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61576842895837" target="_blank" rel="noopener noreferrer">
+                            <FaFacebook className="social-icon" />
+                        </a>
+                    </div>
+
                 </div>  
                 <div className="footer-groups links">
                     <h3>Quick Links</h3>
@@ -58,6 +72,7 @@ const Footer = ()=> {
                     Help and FAQ
                 </p>
             </div>
+            
         </div>
     )
 }

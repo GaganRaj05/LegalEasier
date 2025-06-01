@@ -1,27 +1,85 @@
 import { useState } from "react";
 import "./NotarySignup.css";
-import {validateEmail, validatePhone, sendOtpToEmail, sendOtpToPhone, notarySignup, notaryDetails} from "../../services/notary";
-import {toast} from 'react-toastify';
-import {ClipLoader} from "react-spinners"
-
+import { FaFlagUsa } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import {
+  validateEmail,
+  validatePhone,
+  sendOtpToEmail,
+  sendOtpToPhone,
+  notarySignup,
+  notaryDetails,
+} from "../../services/notary";
+import { toast } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 
 const US_STATES = [
-  "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
-  "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine",
-  "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
-  "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
-  "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
-  "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming",
 ];
 
-const servicesList = ["Affidavit", "Acknowledgment", "Oaths", "Witnessing Signatures"];
+const servicesList = [
+  "Affidavit",
+  "Acknowledgment",
+  "Oaths",
+  "Witnessing Signatures",
+];
 
-const NotarySignup = ({onClose}) => {
+const NotarySignup = ({ onClose }) => {
   const [step, setStep] = useState(1);
   const [showPopup, setShowPopup] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     emailOtp: "",
@@ -39,13 +97,17 @@ const NotarySignup = ({onClose}) => {
     business_address: "",
     website_url: "",
     years_in_business: "",
+    acceptedTerms: false
   });
 
   const togglePreferred = (method) => {
     setFormData((prev) => {
       const updated = [...prev.preferred_method];
       if (updated.includes(method)) {
-        return { ...prev, preferred_method: updated.filter((m) => m !== method) };
+        return {
+          ...prev,
+          preferred_method: updated.filter((m) => m !== method),
+        };
       } else {
         updated.push(method);
         return { ...prev, preferred_method: updated };
@@ -57,7 +119,10 @@ const NotarySignup = ({onClose}) => {
     setFormData((prev) => {
       const updated = [...prev.services_offered];
       if (updated.includes(service)) {
-        return { ...prev, services_offered: updated.filter((s) => s !== service) };
+        return {
+          ...prev,
+          services_offered: updated.filter((s) => s !== service),
+        };
       } else {
         updated.push(service);
         return { ...prev, services_offered: updated };
@@ -72,8 +137,8 @@ const NotarySignup = ({onClose}) => {
 
   const handleClose = () => {
     setIsClosing(true);
-    setTimeout(() => setShowPopup(false), 400); 
-    onClose()
+    setTimeout(() => setShowPopup(false), 400);
+    onClose();
   };
 
   if (!showPopup) return null;
@@ -83,26 +148,29 @@ const NotarySignup = ({onClose}) => {
       toast.error("Please enter your email address");
       return;
     }
-    
+if (!formData.acceptedTerms) {
+    toast.error("You must accept the Terms and Conditions");
+      return;
+    }
     setLoading(true);
     const response = await sendOtpToEmail(formData.email);
     setLoading(false);
-    
-    if(response?.success) {
+
+    if (response?.success) {
       toast.success("An OTP has been sent to your email successfully");
       setStep(2);
-    }
-    else if(response?.error?.msg === "To many requests, please try again") {
+    } else if (response?.error?.msg === "To many requests, please try again") {
       toast.error("OTP requests exceeded, please try again later");
-    }
-    else if(response?.error?.msg === "Some error occured please try again later") {
+    } else if (
+      response?.error?.msg === "Some error occured please try again later"
+    ) {
       toast.error(response.error.msg);
-    }
-    else if(response?.error?.msg === "Email exists, please login") {
+    } else if (response?.error?.msg === "Email exists, please login") {
       toast.error("Email already exists, please login");
-    }
-    else {
-      toast.error("An unknown network error has occurred, please try again later");
+    } else {
+      toast.error(
+        "An unknown network error has occurred, please try again later"
+      );
     }
   };
 
@@ -111,15 +179,17 @@ const NotarySignup = ({onClose}) => {
       toast.error("Please enter the OTP");
       return;
     }
+
     
+
     setLoading(true);
     const response = await validateEmail({
       email: formData.email,
-      otp: formData.emailOtp
+      otp: formData.emailOtp,
     });
     setLoading(false);
-    
-    if(response?.success) {
+
+    if (response?.success) {
       toast.success("Email verified successfully");
       setStep(3);
     } else {
@@ -128,29 +198,34 @@ const NotarySignup = ({onClose}) => {
   };
 
   const handleSendingPhone = async () => {
-    if (!formData.phone) {
-      toast.error("Please enter your phone number");
-      return;
-    }
-    
-    setLoading(true);
-    const response = await sendOtpToPhone(formData.phone);
-    setLoading(false);
-    
-    if(response?.success) {
+  if (!formData.phone) {
+    toast.error("Please enter your phone number");
+    return;
+  }
+
+  const formattedPhone = `+1${formData.phone.replace(/^\+1/, '')}`;
+  
+  setLoading(true);
+  const response = await sendOtpToPhone(formattedPhone); 
+  setLoading(false);
+
+    if (response?.success) {
       toast.success("An OTP has been sent to your phone successfully");
       setStep(4);
-    }
-    else if(response?.error?.msg === "To many otp request, try again in few minutes") {
+    } else if (
+      response?.error?.msg === "To many otp request, try again in few minutes"
+    ) {
       toast.error("OTP requests exceeded, please try again later");
-    }
-    else if(response?.error?.message === "Twilio rejected this number. Please enter a valid U.S. mobile number.") {
+    } else if (
+      response?.error?.message ===
+      "Twilio rejected this number. Please enter a valid U.S. mobile number."
+    ) {
       toast.error("Please enter a valid U.S. mobile number");
-    }
-    else if(response?.error?.msg === "A user exits with this phone please login") {
+    } else if (
+      response?.error?.msg === "A user exits with this phone please login"
+    ) {
       toast.error("Phone number already exists, please login");
-    }
-    else {
+    } else {
       toast.error("Failed to send OTP, please try again");
     }
   };
@@ -160,15 +235,15 @@ const NotarySignup = ({onClose}) => {
       toast.error("Please enter the OTP");
       return;
     }
-    
+
     setLoading(true);
     const response = await validatePhone({
       phone: formData.phone,
-      otp: formData.phoneOtp
+      otp: formData.phoneOtp,
     });
     setLoading(false);
-    
-    if(response?.success) {
+
+    if (response?.success) {
       toast.success("Phone verified successfully");
       setStep(5);
     } else {
@@ -177,166 +252,257 @@ const NotarySignup = ({onClose}) => {
   };
 
   const handleSubmit = async () => {
-    if (!formData.name || !formData.license_number || !formData.state || 
-        !formData.expiration_date || formData.services_offered.length === 0 || 
-        !formData.business_address || !formData.years_in_business) {
+    if (
+      !formData.name ||
+      !formData.license_number ||
+      !formData.state ||
+      !formData.expiration_date ||
+      formData.services_offered.length === 0 ||
+      !formData.business_address ||
+      !formData.years_in_business
+    ) {
       toast.error("Please fill all required fields");
       return;
     }
-    
+
     if (formData.preferred_method.length === 0) {
       toast.error("Please select at least one preferred contact method");
       return;
     }
-    
+
     setLoading(true);
     const response = await notarySignup(formData);
     setLoading(false);
-    
-    if(response?.success) {
+
+    if (response?.success) {
       toast.success("Account created successfully!");
       await notaryDetails(formData);
       handleClose();
     } else {
-      toast.error(response?.error?.msg || "Failed to create account, please try again");
+      toast.error(
+        response?.error?.msg || "Failed to create account, please try again"
+      );
     }
-
   };
 
   return (
     <div className={`popup ${isClosing ? "fade-out" : "fade-in"}`}>
       <div className="form-container">
-        <button className="close-btn" onClick={handleClose}>×</button>
+        <button className="close-btn" onClick={handleClose}>
+          ×
+        </button>
         <h2>Notary Signup</h2>
 
         {step === 1 && (
           <>
             <label>Email:</label>
-            <input 
-              type="email" 
-              name="email"  
-              value={formData.email} 
-              onChange={handleChange} 
-              placeholder="Enter your email address" 
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email address"
               required
             />
-                        <button type="submit" className="notary-sg-btn" disabled={loading} onClick={handleSendingEmail}>{loading ? <ClipLoader size={20} color="#333"/> :"Send OTP" }</button>
-
-        
+<div className="terms-checkbox" style={{ margin: "15px 0" }}>
+  <input
+    type="checkbox"
+    id="terms"
+    name="acceptedTerms"
+    checked={formData.acceptedTerms}
+    onChange={(e) =>
+      setFormData({ ...formData, acceptedTerms: e.target.checked })
+    }
+    required
+  />
+  <label htmlFor="terms" style={{ marginLeft: "8px", fontSize: "14px" }}>
+    I accept the{" "}
+    <a 
+      className="terms-conditions" 
+      href="/legal-easier/Terms&Conditions" 
+      onClick={(e) => {
+        e.preventDefault();
+        navigate('/legal-easier/Terms&Conditions');
+      }}
+    >
+      Terms and Conditions
+    </a>{" "}
+    and{" "}
+    <a 
+      className="terms-conditions" 
+      href="/legal-easier/Privacy-Policy"
+      onClick={(e) => {
+        e.preventDefault();
+        navigate('/legal-easier/Privacy-Policy');
+      }}
+    >
+      Privacy Policy
+    </a>
+    .
+  </label>
+</div>            <button
+              type="submit"
+              className="notary-sg-btn"
+              disabled={loading}
+              onClick={handleSendingEmail}
+            >
+              {loading ? <ClipLoader size={20} color="#333" /> : "Send OTP"}
+            </button>
           </>
         )}
 
         {step === 2 && (
           <>
             <label>Enter Email OTP:</label>
-            <input 
-              type="text" 
-              name="emailOtp" 
-              value={formData.emailOtp} 
-              onChange={handleChange} 
+            <input
+              type="text"
+              name="emailOtp"
+              value={formData.emailOtp}
+              onChange={handleChange}
               placeholder="Enter 6-digit OTP"
               required
             />
-                        <button type="notary-sg-btn" onClick={handleVerifyEmail} className="submit-btn" disabled={loading} >{loading ? <ClipLoader size={20} color="#333"/> :"Verify"}</button>
-          </>
-        )}
-
-        {step === 3 && (
-          <>
-            <label>Phone Number:</label>
-            <input 
-              type="tel" 
-              name="phone" 
-              value={formData.phone} 
-              onChange={handleChange} 
-              placeholder="Enter your phone number"
-              required
-            />
-            <button 
-              className="notary-sg-btn" 
-              onClick={handleSendingPhone}
+            <button
+              type="notary-sg-btn"
+              onClick={handleVerifyEmail}
+              className="submit-btn"
               disabled={loading}
             >
-{loading ? <ClipLoader size={20} color="#333"/> :"Submit"}            </button>
+              {loading ? <ClipLoader size={20} color="#333" /> : "Verify"}
+            </button>
           </>
         )}
 
+{step === 3 && (
+  <>
+    <label>Phone Number:</label>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        padding: '8px 12px',
+        border: '1px solid #ccc',
+        borderRight: 'none',
+        borderRadius: '4px 0 0 4px',
+        background: 'white',
+        marginBottom:'10px',
+        border:'0'
+      }}>
+        <FaFlagUsa style={{ marginRight: '8px',height:'40px', color: '#3c78d8',backgroundColor:'white' }} />
+        <span style={{backgroundColor:'white'}}>+1</span>
+      </div>
+      <input
+        type="tel"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        placeholder="Enter your phone number"
+        required
+        style={{
+          flex: 1,
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0
+        }}
+      />
+    </div>
+    <button
+      className="notary-sg-btn"
+      onClick={handleSendingPhone}
+      disabled={loading}
+    >
+      {loading ? <ClipLoader size={20} color="#333" /> : "Submit"}
+    </button>
+  </>
+)}
         {step === 4 && (
           <>
             <label>Enter Phone OTP:</label>
-            <input 
-              type="text" 
-              name="phoneOtp" 
-              value={formData.phoneOtp} 
-              onChange={handleChange} 
+            <input
+              type="text"
+              name="phoneOtp"
+              value={formData.phoneOtp}
+              onChange={handleChange}
               placeholder="Enter 6-digit OTP"
               required
             />
-            <button 
-              className="notary-sg-btn" 
+            <button
+              className="notary-sg-btn"
               onClick={handleVerifyPhone}
               disabled={loading}
             >
-{loading ? <ClipLoader size={20} color="#333"/> :"Verify"}             </button>
+              {loading ? <ClipLoader size={20} color="#333" /> : "Verify"}{" "}
+            </button>
           </>
         )}
 
         {step === 5 && (
           <>
-            <label>Name:<span style={{color:"red"}}>*</span></label>
-            <input 
-              name="name" 
-              value={formData.name} 
-              onChange={handleChange} 
+            <label>
+              Name:<span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Your full name"
               required
             />
 
             <label>Preferred Contact Method:</label>
             <div className="prf-c">
-              <input 
-                className="mr" 
-                type="checkbox" 
-                onChange={() => togglePreferred("email")} 
-                checked={formData.preferred_method.includes("email")} 
-              /> Email
-              <input 
-                className="mr" 
-                type="checkbox" 
-                onChange={() => togglePreferred("phone")} 
-                checked={formData.preferred_method.includes("phone")} 
-              /> Phone
+              <input
+                className="mr"
+                type="checkbox"
+                onChange={() => togglePreferred("email")}
+                checked={formData.preferred_method.includes("email")}
+              />{" "}
+              Email
+              <input
+                className="mr"
+                type="checkbox"
+                onChange={() => togglePreferred("phone")}
+                checked={formData.preferred_method.includes("phone")}
+              />{" "}
+              Phone
             </div>
 
-            <label>License Number:<span style={{color:"red"}}>*</span></label>
-            <input 
-              name="license_number" 
-              value={formData.license_number} 
-              onChange={handleChange} 
+            <label>
+              License Number:<span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              name="license_number"
+              value={formData.license_number}
+              onChange={handleChange}
               placeholder="Your notary license number"
               required
             />
 
-            <label>State:<span style={{color:"red"}}>*</span></label>
-            <select 
-              className="drp-dwn" 
-              name="state" 
-              value={formData.state} 
+            <label>
+              State:<span style={{ color: "red" }}>*</span>
+            </label>
+            <select
+              className="drp-dwn"
+              name="state"
+              value={formData.state}
               onChange={handleChange}
               required
             >
               <option value="">Select a State</option>
               {US_STATES.map((state) => (
-                <option key={state} value={state}>{state}</option>
+                <option key={state} value={state}>
+                  {state}
+                </option>
               ))}
             </select>
 
-            <label>Expiration Date: <span style={{color:"red"}}>*</span></label>
-            <input 
-              type="date" 
-              name="expiration_date" 
-              value={formData.expiration_date} 
-              onChange={handleChange} 
+            <label>
+              Expiration Date: <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              type="date"
+              name="expiration_date"
+              value={formData.expiration_date}
+              onChange={handleChange}
               required
             />
 
@@ -353,16 +519,18 @@ const NotarySignup = ({onClose}) => {
                 </div>
               ))}
               <div>
-                <button 
-                  className="notary-sg-btn" 
-                  type="button" 
-                  onClick={() => setFormData((p) => ({ ...p, showOther: !p.showOther }))}
+                <button
+                  className="notary-sg-btn"
+                  type="button"
+                  onClick={() =>
+                    setFormData((p) => ({ ...p, showOther: !p.showOther }))
+                  }
                 >
                   + Other
                 </button>
               </div>
               {formData.showOther && (
-                <textarea 
+                <textarea
                   className="others"
                   name="other_service"
                   placeholder="Describe other service"
@@ -373,47 +541,52 @@ const NotarySignup = ({onClose}) => {
             </div>
 
             <label>Business Name (optional): </label>
-            <input 
-              name="business_name" 
-              value={formData.business_name} 
-              onChange={handleChange} 
+            <input
+              name="business_name"
+              value={formData.business_name}
+              onChange={handleChange}
               placeholder="Your business name"
             />
 
-            <label>Business Address: <span style={{color:"red"}}>*</span></label>
-            <input 
-              name="business_address" 
-              value={formData.business_address} 
-              onChange={handleChange} 
+            <label>
+              Business Address: <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              name="business_address"
+              value={formData.business_address}
+              onChange={handleChange}
               placeholder="Your business address"
               required
             />
 
             <label>Website URL:</label>
-            <input 
-              type="url" 
-              name="website_url" 
-              value={formData.website_url} 
-              onChange={handleChange} 
+            <input
+              type="url"
+              name="website_url"
+              value={formData.website_url}
+              onChange={handleChange}
               placeholder="https://example.com"
             />
 
-            <label>Years in Business: <span style={{color:"red"}}>*</span></label>
-            <input 
-              type="number" 
-              name="years_in_business" 
-              value={formData.years_in_business} 
-              onChange={handleChange} 
+            <label>
+              Years in Business: <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              type="number"
+              name="years_in_business"
+              value={formData.years_in_business}
+              onChange={handleChange}
               placeholder="Number of years"
               required
             />
 
-            <button 
-              className="notary-sg-btn" 
+            <button
+              className="notary-sg-btn"
               onClick={handleSubmit}
               disabled={loading}
             >
-{loading ? <ClipLoader size={20} color="#333"/> :"Submit"}             </button>
+              {loading ? <ClipLoader size={20} color="#333" /> : "Submit"}{" "}
+            </button>
           </>
         )}
       </div>

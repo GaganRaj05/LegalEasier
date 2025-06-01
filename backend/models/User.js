@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    acceptedTerms: {
+        type:Boolean,
+        required:true,
+    }
 })
 
 const User = mongoose.model("users", userSchema);

@@ -40,7 +40,7 @@ const handleSignIn = async(req, res)=> {
 
 const handleSignUp = async (req, res) => {
     try {
-        const {name, user_name, password, address,email} = req.body;
+        const {name, user_name, password, address,email,acceptedTerms} = req.body;
         const user_exists = await User.findOne({user_name});
         if(user_exists) return res.status(400).json({success:false, msg:"Username taken please enter a new one"});
         const emailExists = await User.findOne({email});
@@ -53,7 +53,8 @@ const handleSignUp = async (req, res) => {
             user_name,
             email,
             password:hashedPassword,
-            address
+            address,
+            acceptedTerms
         })
 
         return res.status(201).json({success:true, msg:"Account created successfully"});

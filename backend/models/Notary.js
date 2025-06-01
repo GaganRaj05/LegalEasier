@@ -47,7 +47,11 @@ const notarySchema = new mongoose.Schema({
   },
   years_in_business: {
     type: Number
-  }
+  },
+    acceptedTerms: {
+        type:Boolean,
+        required:true,
+    }
 });
 
 module.exports = mongoose.model('notary', notarySchema);

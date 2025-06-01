@@ -12,7 +12,7 @@ const sendPhoneOtp = async (phoneNumber,otp) => {
         await client.messages.create({
             body:`Your otp is ${otp}`,
             to:cleanedPhone,
-            from:'+16812244893'
+            from:process.env.TWILIO_PHONE_NUMBER
         });
 
         console.log('otp sent')

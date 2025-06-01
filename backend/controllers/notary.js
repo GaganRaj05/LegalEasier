@@ -117,10 +117,10 @@ const validateEmailOtp =async (req, res) => {
 
 const notarySignup = async(req, res) => {
     try {
-        const {name, email, phone, preferred_method, license_number,state, expiration_date, services_offered, business_name, business_address, website_url, years_in_business} = req.body;
+        const {name, email, phone, preferred_method, license_number,state, expiration_date, services_offered, business_name, business_address, website_url, years_in_business, acceptedTerms } = req.body;
 
         await Notary.create({
-            name, email, phone, preferred_method, license_number,state, expiration_date, services_offered, business_name, business_address, website_url, years_in_business
+            name, email, phone, preferred_method, license_number,state, expiration_date, services_offered, business_name, business_address, website_url, years_in_business,acceptedTerms
         });
 
         return res.status(201).json({success:true, msg:"Account created successfully"})

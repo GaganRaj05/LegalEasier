@@ -1,6 +1,6 @@
 const Contact = require('../models/Contacts');
 const {sendQueryMail} = require('../utils/email');
-
+const contact_mail = process.env.CONTACT_MAIL;
 async function sendQuery(req, res) {
     try {
         const {email, name, message,phone} = req.body;
@@ -10,7 +10,7 @@ async function sendQuery(req, res) {
             message
         });
 
-        await sendQueryMail('gaganraj.dev05@gmail.com',{email, name,phone, message});
+        await sendQueryMail(contact_mail,{email, name,phone, message});
         return res.status(200).json({success:true, msg:'mail sent successfully'});
     }
     catch(err){

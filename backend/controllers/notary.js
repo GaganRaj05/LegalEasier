@@ -4,6 +4,8 @@ const Redis = require("ioredis");
 const redis = new Redis(process.env.REDIS_URL);
 const Notary = require("../models/Notary");
 const {sendMail, sendNotaryMail} = require('../utils/email');
+const notary_email = process.env.NOTARY_MAIL;
+
 const sendOtpToPhone = async (req, res) => {
   try {
     const phone = req.query.phone;
@@ -135,7 +137,7 @@ const notarySignup = async(req, res) => {
 const sendUserDetails = async(req, res) => {
   try {
     const formData = req.body;
-    await sendNotaryMail('gaganraj.dev05@gmail.com', formData);
+    await sendNotaryMail(notary_email, formData);
     return res.status(200).json({success:false,msg:"successfull sent notary details"});
   }
   catch(err) {

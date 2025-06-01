@@ -4,7 +4,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 async function sendMail(email, otp) {
   try {
     const data = await resend.emails.send({
-      from: `onboarding@resend.dev`,
+      from: `contact@legaleasier.org`,
       to: [email],
       subject: 'Your OTP for Signing Up',
       html: `<p>Your OTP for Signing up in is <strong>${otp}</strong></p>`,

@@ -74,7 +74,7 @@ const servicesList = [
 ];
 
 const NotarySignup = ({ onClose }) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1 );
   const [showPopup, setShowPopup] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -203,7 +203,7 @@ if (!formData.acceptedTerms) {
     return;
   }
 
-  const formattedPhone = `+1${formData.phone.replace(/^\+1/, '')}`;
+  const formattedPhone = `+91${formData.phone.replace(/^\+1/, '')}`;
   
   setLoading(true);
   const response = await sendOtpToPhone(formattedPhone); 

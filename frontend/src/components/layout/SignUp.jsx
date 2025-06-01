@@ -84,6 +84,7 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
       password: formData.password,
       address: formData.address,
       name: formData.name,
+      acceptedTerms:formData.acceptedTerms
     };
     const response = await signUp(data);
     if (response?.success) {

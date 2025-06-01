@@ -27,6 +27,7 @@ const sendOtpToPhone = async (req, res) => {
         });
     const otp = Math.floor(100000 + Math.random() * 900000);
     await sendPhoneOtp(cleanedPhone, otp);
+    console.log(otp)
     await redis.set(`otp:${cleanedPhone}`, otp, "EX", 300);
     return res
       .status(200)
@@ -52,7 +53,7 @@ const verifyOtp = async (req, res) => {
   try {
     const { phone, otp } = req.body;
     console.log(req.body)
-    const cleanedPhone = `${phone.replace(/\s+/g, "")}`;
+    const cleanedPhone = `+${phone.replace(/\s+/g, "")}`;
     console.log(cleanedPhone)
     const savedOtp = await redis.get(`otp:${cleanedPhone}`);
     console.log(savedOtp)

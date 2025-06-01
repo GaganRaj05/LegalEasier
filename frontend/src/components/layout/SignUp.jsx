@@ -56,7 +56,9 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
       email,
       otp,
     };
+    setIsLoading(true);
     const response = await validateOTP(data);
+    setIsLoading(false);
     if (response?.success) {
       toast.success("Email verified successfully");
     } else if (response?.error?.msg === "Incorrect otp entered") {
@@ -86,7 +88,9 @@ const SignUpPopup = ({ onClose, onLoginClick }) => {
       name: formData.name,
       acceptedTerms:formData.acceptedTerms
     };
+    setIsLoading(true);
     const response = await signUp(data);
+    setIsLoading(false);
     if (response?.success) {
       toast.success("Account created successfully, Please login");
       onClose();

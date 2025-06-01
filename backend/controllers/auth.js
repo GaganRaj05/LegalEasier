@@ -24,10 +24,11 @@ const handleSignIn = async(req, res)=> {
         const token = jsonwebtoken.sign({userData}, process.env.JWT_SECRET,{expiresIn:'1h'});
 
         res.cookie('authtoken',token,{
-            httpOnly:false,
+            httpOnly:true,
             secure:true,
-            sameSite:'lax',
-            path:'/'
+            sameSite:'none',
+            path:'/',
+            maxAge:3600000
         });
         return res.status(200).json({success:true, msg:"Login successfull", userData});
 

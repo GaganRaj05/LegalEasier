@@ -8,6 +8,7 @@ import SignUpPopup from "./SignUp";
 import ContactFormPopup from "./ContactForm";
 import { toast } from "react-toastify";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Leads from "../ui/Leads";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const NavBar = () => {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [isBotOpen, setIsBotOpen] = useState(true);
 
   const handleClick = (e, pageType) => {
     if (pageType === "services") {
@@ -131,6 +133,7 @@ const NavBar = () => {
       {isContactFormOpen && (
         <ContactFormPopup onClose={() => setIsContactFormOpen(false)} />
       )}
+      {isBotOpen && <Leads onClose={()=>{setIsBotOpen(false)}}/>}
     </div>
   );
 };

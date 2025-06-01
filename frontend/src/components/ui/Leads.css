@@ -26,8 +26,8 @@
   z-index: 1001;
   opacity: 0;
   transition: all 0.3s ease;
-  max-width: 400px;
-  width: 90%;
+  width: 700px;
+  height: 400px;
 }
 
 .leads-popup.visible {
@@ -82,4 +82,70 @@
 
 .leads-content button:hover {
   background-color: #0056b3;
+}
+.ai-greet {
+ width: 100%;
+ height: 100%;
+ margin-top: 10px; 
+  border-radius: 10px;
+  display: flex;
+}
+.ai-greet div{
+  width: 50%;
+  height: 100%;
+  border-radius: 10px;
+}
+.ai-greet-content {
+  padding-top:15px ;
+}
+
+.ai-greet-next {
+  width: 50px;
+  margin-left: 220px;
+  margin-top: 120px;
+  width: 100px;
+  font-size: 20px;
+  color: #007bff;
+  background-color: white;
+  border: none;
+}
+
+@media (max-width:765px) {
+  .leads-popup {
+    height: 600px;
+    width: 350px;
+  } 
+  .ai-greet {
+    flex-direction: column;
+    align-items: center;
+  }
+  .animation-robot {
+    max-width: 250px;
+    max-height: 300px;
+  }
+  
+  .ai-greet div {
+    width: 100%;
+    height: 50%;
+  }
+  .ai-greet-next {
+    margin-top: 20px;
+    margin-left: 240px;
+  }
+}
+
+@media (max-width:424px) {
+  .leads-popup {
+    width: 250px;
+    height: 700px;
+  }
+  .ai-greet-next {
+    margin-left: 150px;
+  }
+}
+
+@media (max-width:320px) {
+    .leads-popup {
+      height: 600px;
+    }
 }

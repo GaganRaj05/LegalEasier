@@ -1,14 +1,14 @@
-import { useState, useEffect, forwardRef } from 'react';
-import './Leads.css'; 
+import { useState, useEffect, forwardRef } from "react";
+import "./Leads.css";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import {toast} from "react-toastify";
 
 const Leads = forwardRef(({ onClose }, ref) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Start showing immediately when opened via chat icon
     setIsVisible(true);
-    
-    // Auto-show after delay only if not already opened
+
     const timer = setTimeout(() => {
       if (!isVisible) {
         setIsVisible(true);
@@ -22,31 +22,35 @@ const Leads = forwardRef(({ onClose }, ref) => {
     setIsVisible(false);
     setTimeout(() => {
       onClose();
-    }, 300); // Match this with CSS transition duration
+    }, 300);
   };
 
   return (
     <>
-      <div 
-        className={`leads-overlay ${isVisible ? 'visible' : ''}`} 
+      <div
+        className={`leads-overlay ${isVisible ? "visible" : ""}`}
         onClick={closePopup}
       />
-      
-      <div className={`leads-popup ${isVisible ? 'visible' : ''}`}>
+
+      <div className={`leads-popup ${isVisible ? "visible" : ""}`}>
         <button className="leads-close-btn" onClick={closePopup}>
           &times;
         </button>
-        
-        <div className="leads-content">
-          <h2>How can we help you?</h2>
-          <p>Our team is ready to answer your questions.</p>
-          
-          <form>
-            <input type="text" placeholder="Your name" required />
-            <input type="email" placeholder="Your email" required />
-            <textarea placeholder="Your message" rows="4"></textarea>
-            <button type="submit">Send Message</button>
-          </form>
+        <div className="ai-greet">
+          <div className="animation-robot">
+            <DotLottieReact
+              src="https://lottie.host/1bf8ab4d-326c-4792-b0e3-9404a35b289f/fjMVJGTc6l.lottie"
+              loop
+              autoplay
+            />
+          </div>
+          <div className="ai-greet-content">
+            <h1 className="ai-greet-head">Hi! I'm Lawgic, your friendly legal assistant</h1>
+            <p>
+               I'm here to help you navigate issues like divorce, eviction, estate planning, and more. How can I assist you today?
+            </p>
+            <button className="ai-greet-next" onClick={()=>toast.error('Feature yet to be added')}>Next</button>
+          </div>
         </div>
       </div>
     </>

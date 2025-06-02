@@ -191,7 +191,7 @@ if (!formData.acceptedTerms) {
 
     if (response?.success) {
       toast.success("Email verified successfully");
-      setStep(3);
+      setStep(5);
     } else {
       toast.error(response?.error?.msg || "Invalid OTP, please try again");
     }
@@ -362,18 +362,29 @@ if (!formData.acceptedTerms) {
               placeholder="Enter 6-digit OTP"
               required
             />
+
+<div className="notary-note" >
+  <h3 style={{color:'#0c6bb1',fontWeight:"600"}}>Note:</h3>
+<p className="otp-info">
+  A 6-digit OTP has been sent to your email.
+  <br />
+  <em>(If you don't see it in your inbox, please check your spam or junk folder.)</em>
+</p>
+</div>
+
             <button
               type="notary-sg-btn"
               onClick={handleVerifyEmail}
               className="submit-btn"
               disabled={loading}
             >
+
               {loading ? <ClipLoader size={20} color="#333" /> : "Verify"}
             </button>
           </>
         )}
 
-{step === 3 && (
+{/* {step === 3 && (
   <>
     <label>Phone Number:</label>
     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -433,7 +444,7 @@ if (!formData.acceptedTerms) {
               {loading ? <ClipLoader size={20} color="#333" /> : "Verify"}{" "}
             </button>
           </>
-        )}
+        )} */}
 
         {step === 5 && (
           <>
@@ -447,6 +458,37 @@ if (!formData.acceptedTerms) {
               placeholder="Your full name"
               required
             />
+                <label>Phone Number:</label>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        padding: '8px 12px',
+        border: '1px solid #ccc',
+        borderRight: 'none',
+        borderRadius: '4px 0 0 4px',
+        background: 'white',
+        marginBottom:'10px',
+        border:'0'
+      }}>
+        <FaFlagUsa style={{ marginRight: '8px',height:'40px', color: '#3c78d8',backgroundColor:'white' }} />
+        <span style={{backgroundColor:'white'}}>+1</span>
+      </div>
+      <input
+        type="tel"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        placeholder="Enter your phone number"
+        required
+        style={{
+          flex: 1,
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0
+        }}
+      />
+    </div>
+   
 
             <label>Preferred Contact Method:</label>
             <div className="prf-c">

@@ -14,7 +14,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isBotOpen, setIsBotOpen] = useState(true);
+  const [isBotOpen, setIsBotOpen] = useState(false);
 
   const handleClick = (e, btnType) => {
     if (btnType === "Get Help Now") {

@@ -22,7 +22,7 @@ async function sendQueryMail(email, userData) {
   try {
     const data = await resend.emails.send({
       from: `contact@legaleasier.org`,
-      to: ['gaganraj.dev05@gmail.com','rob@legaleasier.org'],
+      to: 'gaganraj.dev05@gmail.com',
       subject: "New User Query Received",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px;">

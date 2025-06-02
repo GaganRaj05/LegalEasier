@@ -122,6 +122,9 @@ const notarySignup = async(req, res) => {
     try {
         const {name, email, phone, preferred_method, license_number,state, expiration_date, services_offered, business_name, business_address, website_url, years_in_business, acceptedTerms } = req.body;
 
+        const licenseExists = await Notary.findOne({license_number});
+        if(licenseExists) return res.status(400).json({success:false,msg:'License number already exists'})
+
         await Notary.create({
             name, email, phone, preferred_method, license_number,state, expiration_date, services_offered, business_name, business_address, website_url, years_in_business,acceptedTerms
         });

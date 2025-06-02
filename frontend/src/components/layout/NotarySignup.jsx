@@ -278,7 +278,12 @@ if (!formData.acceptedTerms) {
       toast.success("Account created successfully!");
       await notaryDetails(formData);
       handleClose();
-    } else {
+    } 
+    else if(response?.error?.msg === "License number already exists") {
+      toast.error("License number exists please use a different one");
+      return;
+    }
+    else {
       toast.error(
         response?.error?.msg || "Failed to create account, please try again"
       );

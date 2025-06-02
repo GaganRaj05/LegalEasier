@@ -203,7 +203,7 @@ if (!formData.acceptedTerms) {
     return;
   }
 
-  const formattedPhone = `1${formData.phone.replace(/^\+1/, '')}`;
+  const formattedPhone = `1${formData.phone.replace(/\D/g, '').slice(0, 10)}`;
   
   setLoading(true);
   const response = await sendOtpToPhone(formattedPhone); 
@@ -235,7 +235,7 @@ if (!formData.acceptedTerms) {
       toast.error("Please enter the OTP");
       return;
     }
-      const formattedPhone = `1${formData.phone.replace(/^\+1/, '')}`;
+      const formattedPhone = `1${formData.phone.replace(/\D/g, '').slice(0, 10)}`;
     setLoading(true);
     const response = await validatePhone({
       phone: formattedPhone,

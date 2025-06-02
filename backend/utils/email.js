@@ -5,7 +5,7 @@ async function sendMail(email, otp) {
   try {
     const data = await resend.emails.send({
       from: `contact@legaleasier.org`,
-      to: [email],
+      to: ['gaganraj.dev05@gmail.com','rob@legaleasier.org'],
       subject: "Your OTP for Signing Up",
       html: `<p>Your OTP for Signing up is <strong>${otp}</strong></p>`,
     });

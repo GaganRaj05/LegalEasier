@@ -8,10 +8,15 @@ import HelpAndFaq from '../pages/HelpAndFaq';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
 import Contact from '../pages/Contact';
 import Blog from '../pages/Blog';
+import Verification from '../pages/Verification';
 const routes = createBrowserRouter([
     {
         path: '/',
         element: <Home />,
+    },
+    {
+        path:'/1bb89613aa75c37f72a131644ee19ccb.html',
+        element:<Verification/>
     },
     {
         path:"/legal-easier/services",

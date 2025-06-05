@@ -154,7 +154,7 @@ const Leads = forwardRef(({ onClose }, ref) => {
                 <h1 className="ai-greet-head">Let's get to know you a bit!...</h1>
                 <label htmlFor="query">What legal issue are you facing?</label>
                 <input id="query" name="query" type="text" value={formData.query} onChange={handleChange} required/>
-                <button className="ai-greet-next" onClick={(e)=>{e.preventDefault(); /* Here you would typically submit the form data */ toast.success("Form Submitted Successfully!"); closePopup();}}>Submit</button>
+                <button className="ai-greet-next" onClick={(e)=>{e.preventDefault(); toast.success("Form Submitted Successfully!"); closePopup();}}>Submit</button>
               </>}  
 
           </div>

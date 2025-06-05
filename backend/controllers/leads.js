@@ -1,6 +1,7 @@
 const Leads = require("../models/Leads");
 const axios = require("axios");
 const Ai_url = process.env.FAST_API_BACKEND_URL;
+const {sendEmailToOwner} = require('../utils/sendLead')
 
 const storeLeads = async (req, res) => {
   try {
@@ -14,6 +15,7 @@ const storeLeads = async (req, res) => {
       query
     });
 
+    await sendEmailToOwner(newLead);
     return res
       .status(201)
       .json({
@@ -23,7 +25,7 @@ const storeLeads = async (req, res) => {
       });
   } catch (err) {
     console.log(err.message);
-    return res.status(501).json("Some error occured please try again later");
+    return res.status(501).json({success:false, msg:"Some error occured please try again later"});
   }
 };
 

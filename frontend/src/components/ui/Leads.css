@@ -110,6 +110,16 @@
   border: none;
 }
 
+.error-input {
+  border: 1px solid red !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
 @media (max-width:765px) {
   .leads-popup {
     height: 600px;

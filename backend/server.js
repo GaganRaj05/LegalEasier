@@ -6,7 +6,9 @@ const connectToDb = require('./config/db');
 const authRouter = require('./routes/auth');
 const contactRoutes = require('./routes/contact');
 const cookieParser = require('cookie-parser');
-const notaryRoutes = require('./routes/notary')
+const notaryRoutes = require('./routes/notary');
+const leadsRoutes = require('./routes/leads');
+
 const cors = require('cors')
 const app = express()
 app.set('trust proxy', 1); 
@@ -22,7 +24,8 @@ app.use(morgan('dev'));
 app.use('/app/notary', notaryRoutes);
 app.use('/app/contact',contactRoutes);
 app.use("/app/auth",authRouter);
+app.use('/app/leads',leadsRoutes);
 
-
+require('./utils/inactivityChecker')
 connectToDb(process.env.MONGODB_URL);
 app.listen(process.env.PORT, ()=>console.log("Server started at PORT:",process.env.PORT))

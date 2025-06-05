@@ -2,8 +2,7 @@ import { useState } from 'react';
 import './ChatIcon.css'; 
 import Leads from '../ui/Leads';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import ChatBox from '../ui/ChatBox';
-
+import ChatContainer from '../ui/ChatContainer';
 const ChatIcon = () => {
   const [isLeadsOpen, setIsLeadsOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -36,7 +35,7 @@ const ChatIcon = () => {
       </button>
 
       {isLeadsOpen && <Leads onClose={()=>setIsLeadsOpen(false)} onSubmission={handleLeadSubmissionComplete} />}
-      {isChatOpen && <ChatBox onClose={closeChatBox} />}
+      {isChatOpen && <ChatContainer onClose={closeChatBox} />}
     </div>
   );
 };

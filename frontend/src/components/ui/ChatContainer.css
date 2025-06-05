@@ -1,0 +1,38 @@
+/* ChatBox.css */
+.chat-box {
+  position: fixed;
+  bottom: -100%;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  animation: slideUp 0.4s ease-out forwards;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideUp {
+  to {
+    bottom: 20px;
+  }
+}
+
+.chat-header {
+  background: #007bff;
+  color: white;
+  padding: 1rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}

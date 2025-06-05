@@ -1,16 +1,11 @@
-FROM python:3.9-slim
+FROM python:3.11-slim
 
-# Set container workdir (points to your FastAPI code)
 WORKDIR /app
 
-# Copy requirements from fastapi-backend
-COPY ./fastapi-backend/requirements.txt .
+COPY . .
 
-# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy entire FastAPI project
-COPY ./fastapi-backend .
+EXPOSE 8000
 
-# Runtime command (matches your structure)
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './ChatIcon.css'; 
 import Leads from '../ui/Leads';
 import { IoChatbubbleEllipsesSharp } from "react-icons/io5";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 
 const ChatIcon = () => {
@@ -18,7 +19,12 @@ const ChatIcon = () => {
   return (
     <div className="chat-container">
       <button className="chat-icon" onClick={toggleChat}>
-        <IoChatbubbleEllipsesSharp style={{width:'100%', height:'100%'}}/>
+            <DotLottieReact
+      src="https://lottie.host/80351646-58bd-4a4d-a055-c8ca6e71887d/9SnQ20ewAS.lottie"
+      loop
+      autoplay
+    />
+
       </button>
       {isLeadsOpen && <Leads onClose={handleCloseLeads} />}
     </div>

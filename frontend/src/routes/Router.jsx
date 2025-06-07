@@ -9,6 +9,7 @@ import PrivacyPolicy from '../pages/PrivacyPolicy';
 import Contact from '../pages/Contact';
 import Blog from '../pages/Blog';
 import Verification from '../pages/Verification';
+import Schedule from '../pages/Schedule';
 const routes = createBrowserRouter([
     {
         path: '/',
@@ -45,6 +46,10 @@ const routes = createBrowserRouter([
     {
         path:'legal-easier/blog-page',
         element:<Blog/>
+    },
+    {
+        path:'/schedule',
+        element:<Schedule/>
     }
 ])
 

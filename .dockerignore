@@ -1,0 +1,12 @@
+*
+!fastapi-backend/
+
+fastapi-backend/.git/
+fastapi-backend/__pycache__/
+fastapi-backend/*.log
+fastapi-backend/.env
+
+myenv/        
+venv/
+env/
+.venv/

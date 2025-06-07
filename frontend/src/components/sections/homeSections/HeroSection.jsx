@@ -2,7 +2,7 @@ import "./HeroSection.css";
 import Button from "../../ui/Buttons";
 import ContactFormPopup from "../../layout/ContactForm";
 import { useAuth } from "../../../context/AuthContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginPopup from "../../layout/Login";
 import SignUpPopup from "../../layout/SignUp";
@@ -15,6 +15,7 @@ const HeroSection = () => {
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isBotOpen, setIsBotOpen] = useState(false);
+
 
   const handleClick = (e, btnType) => {
     if (btnType === "Get Help Now") {
@@ -79,7 +80,7 @@ const HeroSection = () => {
       {isContactFormOpen && (
         <ContactFormPopup onClose={() => setIsContactFormOpen(false)} />
       )}
-            {isBotOpen && <Leads onClose={()=>{setIsBotOpen(false)}}/>}
+            {isBotOpen && <Leads onClose={()=>{setIsBotOpen(false)}} />}
 
     </>
   );

@@ -8,6 +8,10 @@ const ChatIcon = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   const toggleChat = () => {
+    if(localStorage.getItem('convo_id')) {
+      setIsChatOpen(true);
+      return;
+    }
     setIsLeadsOpen(true);
   };
 

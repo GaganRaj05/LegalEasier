@@ -36,8 +36,8 @@ const getAiResponse = async (req, res) => {
       conversationId: convo_id,
       message: message,
     });
-    let ai_answer_text = await ai_response.data.answer.answer;
-        ai_answer_text = ai_answer_text
+    const ai_answer_text = await ai_response.data.answer.answer;
+      let  new_ai_answer_text = ai_answer_text
       .replace(/'/g, '')
       .replace(/"/g,'')    
       .replace(/\s*\+\s*/g, ' ')  
@@ -49,7 +49,7 @@ const getAiResponse = async (req, res) => {
         $push: {
           messages: {
             user: message,
-            ai: ai_answer_text,
+            ai: new_ai_answer_text,
           },
         },
         $set: {

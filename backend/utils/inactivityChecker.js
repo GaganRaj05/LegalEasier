@@ -5,7 +5,7 @@ const { sendEmailToUser, sendEmailToOwner } = require("./sendLead");
 
 cron.schedule("* * * * *", async () => {
   try {
-    const threeMinutesAgo = new Date(Date.now() - 1 * 60 * 1000);
+    const threeMinutesAgo = new Date(Date.now() - 3 * 60 * 1000);
 
     const leadIds = await Leads.find({
       inactive: false,

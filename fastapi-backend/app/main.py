@@ -18,3 +18,6 @@ app.include_router(chat.router,prefix='/ai')
 async def hello():
     return {"success":True, "message":"hello"}
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=PORT)

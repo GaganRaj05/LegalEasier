@@ -13,7 +13,11 @@ import os
 import json as std_json
 import asyncio
 
-embeddings = HuggingFaceEmbeddings(model_name='all-MiniLM-L6-v2')
+embeddings = HuggingFaceEmbeddings(
+    model_name="./models/all-MiniLM-L6-v2", 
+    model_kwargs={'device': 'cpu'},
+    encode_kwargs={'normalize_embeddings': True}
+)
 
 MAIN_PROMPT_TEMPLATE = """You are a helpful legal assistant AI named LawDog. Always refer to yourself as LawDog.
 IMPORTANT: Your name is **LawDog** — always introduce yourself as LawDog and never use any other name like Lawgic, LawBot, etc.

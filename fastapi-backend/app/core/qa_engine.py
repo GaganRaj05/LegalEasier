@@ -1,19 +1,18 @@
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings  # Updated import
+from langchain_huggingface import HuggingFaceEmbeddings 
 from langchain_community.vectorstores import FAISS
-from langchain_core.prompts import PromptTemplate  # Updated import
+from langchain_core.prompts import PromptTemplate  
 from langchain_groq import ChatGroq
 from fastapi import HTTPException
 from app.core.config import GROQ_API_KEY
 from langchain.chains import RetrievalQA
-from langchain_core.runnables import RunnablePassthrough  # New import for chain
+from langchain_core.runnables import RunnablePassthrough  
 from typing import List
 import os
 import json as std_json
 import asyncio
 
-# Updated embeddings initialization
 embeddings = HuggingFaceEmbeddings(model_name='all-MiniLM-L6-v2')
 
 MAIN_PROMPT_TEMPLATE = """You are a helpful legal assistant AI named LawDog. Always refer to yourself as LawDog.
@@ -82,11 +81,17 @@ main_prompt = PromptTemplate(
     template=MAIN_PROMPT_TEMPLATE,
     input_variables=["context", "question"]
 )
+urgency_prompt = PromptTemplate(
+    input_variables=["formatted_data"],  
+    template=URGENCY_PROMPT_TEMPLATE,
+)
+
 
 qa_chain = None
+urgency_chain = None
 
 async def initialize_components():
-    global vectorstore, qa_chain
+    global vectorstore, qa_chain,urgency_chain
     
     if os.path.exists('legal-db'):
         print('Loading existing vector database')
@@ -108,18 +113,11 @@ async def initialize_components():
         chain_type_kwargs={"prompt": main_prompt}
     )
 
-# Updated urgency chain using Runnable
-urgency_prompt = PromptTemplate(
-    input_variables=["formatted_data"],  
-    template=URGENCY_PROMPT_TEMPLATE,
-)
-
-# Updated chain implementation
-urgency_chain = (
-    RunnablePassthrough() | 
-    urgency_prompt | 
-    llm
-)
+    urgency_chain = (
+        RunnablePassthrough() | 
+        urgency_prompt | 
+        llm
+    )
 
 async def answer_question(query: str):
     try:

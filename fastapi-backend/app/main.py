@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.core.config import PORT
 from app.routes import chat
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 app = FastAPI()
 app.add_middleware(
@@ -20,4 +21,5 @@ async def hello():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=PORT)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)

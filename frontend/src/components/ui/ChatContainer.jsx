@@ -12,6 +12,14 @@ const ChatContainer = ({ onClose }) => {
   const [isTyping, setIsTyping] = useState(false);
   const bottomRef = useRef(null); 
 
+    const scheduleButtonHTML = `<div class="schedule-button-wrapper">
+         <a class="schedule-button" href="http://localhost:5173/schedule.com" target="_blank">
+           🗓️ Schedule a Consultation
+         </a>
+       </div>`
+    ;
+
+
   useEffect(() => {
     if (bottomRef.current) {
       bottomRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -22,33 +30,65 @@ const ChatContainer = ({ onClose }) => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!query.trim()) return;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!query.trim()) return;
 
-    const userMessage = { sender: 'user', text: query };
-    setMessages(prev => [...prev, userMessage]);
-    setQuery('');
-    setIsTyping(true);
+  const userMessage = { sender: 'user', text: query };
+  setMessages(prev => [...prev, userMessage]);
+  setQuery('');
+  setIsTyping(true);
 
-    try {
-      const response = await sendQuery(query);
+  try {
+    const form = {
+      convo_id: localStorage.getItem('convo_id'),
+      message: query,
+      page_context: 'General'
+    };
+
+    const response = await sendQuery(form); 
+    console.log("AI Response:", response);
+
+    if (response?.success) {
+      const aiText = response.response.ai_answer_text;
+
       const aiResponse = {
         sender: 'ai',
-        text: response?.success
-          ? marked.parse(response.response)
-          : 'An unknown network error has occurred. Please try again later.',
+        text: marked.parse(aiText)
       };
+
       setMessages(prev => [...prev, aiResponse]);
-    } catch (error) {
+
+if (response.response.suggest_schedule) {
+
+  const scheduleButton = {
+    sender: 'ai',
+    text: `
+      <div class="schedule-button-wrapper">
+        <a class="schedule-button" href="http://localhost:5173/schedule" target="_blank">
+          🗓️ Schedule a Consultation
+        </a>
+      </div>
+    `
+  };
+
+  setMessages(prev => [...prev, scheduleButton]);
+}
+    } else {
       setMessages(prev => [
         ...prev,
-        { sender: 'ai', text: 'Something went wrong. Please try again.' }
+        { sender: 'ai', text: 'An unknown network error has occurred. Please try again later.' }
       ]);
-    } finally {
-      setIsTyping(false);
     }
-  };
+  } catch (error) {
+    setMessages(prev => [
+      ...prev,
+      { sender: 'ai', text: 'Something went wrong. Please try again.' }
+    ]);
+  } finally {
+    setIsTyping(false);
+  }
+};
 
   return (
     <div className="chat-box">

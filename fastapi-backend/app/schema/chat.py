@@ -2,9 +2,11 @@ from pydantic import BaseModel,Field
 from datetime import datetime
 from typing import List, Optional
 
+
 class ChatSchema(BaseModel):
     conversationId:str
-    message:str    
+    message:str
+    page_context:str  
 
 
 class Message(BaseModel):

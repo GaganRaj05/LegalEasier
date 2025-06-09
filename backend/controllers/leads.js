@@ -31,10 +31,11 @@ const storeLeads = async (req, res) => {
 
 const getAiResponse = async (req, res) => {
   try {
-    const { convo_id, message } = req.body;
+    const { convo_id, message, page_context } = req.body;
     const ai_response = await axios.post(`${Ai_url}/ask-legal`, {
       conversationId: convo_id,
       message: message,
+      page_context:page_context
     });
     const ai_answer_text = await ai_response.data.answer.answer;
       let  new_ai_answer_text = ai_answer_text
@@ -65,10 +66,10 @@ const getAiResponse = async (req, res) => {
       .json({
         success: true,
         msg: "ai response generated",
-        response: ai_answer_text,
+        response: {ai_answer_text,suggest_schedule:ai_response.data.answer.suggest_schedule}
       });
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
     return res
       .status(501)
       .json({

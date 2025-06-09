@@ -19,16 +19,9 @@ const sendInfo = async(formData) => {
 
 const sendQuery = async(query) => {
     try {
-        const convo_id = localStorage.getItem('convo_id');
-        if(!convo_id) return {error:{sucess:false, msg:'Convo id not found'}};
-
-        const form = {
-            convo_id,
-            message:query
-        }
         const response = await fetch(`${backend_url}/leads/get-response`, {
             method:'POST',
-            body:JSON.stringify(form),
+            body:JSON.stringify(query),
             headers:{'Content-type':"application/json"},
         });
         const data = await response.json();

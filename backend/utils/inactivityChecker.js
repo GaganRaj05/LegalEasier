@@ -5,7 +5,7 @@ const { sendEmailToUser, sendEmailToOwner } = require("./sendLead");
 
 cron.schedule("* * * * *", async () => {
   try {
-    const threeMinutesAgo = new Date(Date.now() - 3 * 60 * 1000);
+    const threeMinutesAgo = new Date(Date.now() - 1 * 60 * 1000);
 
     const leadIds = await Leads.find({
       inactive: false,
@@ -13,7 +13,6 @@ cron.schedule("* * * * *", async () => {
       $expr: { $gt: [{ $size: "$messages" }, 0] },
     }).select("_id");
 
-    console.log(leadIds);
     if (leadIds.length > 0) {
       await Leads.updateMany(
         { _id: { $in: leadIds } },
@@ -42,7 +41,7 @@ cron.schedule("* * * * *", async () => {
       );
 
       console.log(
-        `Marked ${leadIds.length} leads as inactive and update urgency`
+        `Marked ${leadIds.length} leads as inactive and updated urgency`
       );
     }
   } catch (err) {

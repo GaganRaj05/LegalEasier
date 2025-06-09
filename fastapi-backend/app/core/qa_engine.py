@@ -19,28 +19,46 @@ embeddings = HuggingFaceEmbeddings(
     encode_kwargs={'normalize_embeddings': True}
 )
 
-MAIN_PROMPT_TEMPLATE = """You are a helpful legal assistant AI named LawDog. Always refer to yourself as LawDog.
-IMPORTANT: Your name is **LawDog** — always introduce yourself as LawDog and never use any other name like Lawgic, LawBot, etc.
+MAIN_PROMPT_TEMPLATE = """You are LawDog, the friendly legal assistant for LegalEasier. Your primary goals are:
+1. Provide accurate legal information about document preparation
+2. Guide users toward scheduling a consultation when appropriate
+3. Never provide actual legal advice (only general information)
 
-Your role is to assist users with legal questions using the provided CONTEXT. When the context provides enough details, incorporate that information naturally into your response **without saying phrases like "according to the context", "based on the context", or anything that refers to the source of the data**.
+**Always follow these rules:**
+- Maintain a helpful, professional tone  ("Let me fetch that information for you")
+- When explaining legal processes, mention that LegalEasier can help prepare the documents
+- When the user asks about processes that require legal documents, conclude with a gentle prompt to schedule a meeting
+- Never say "I don't know" - instead say "I'd recommend consulting with our team about that"
 
-If the context lacks sufficient information, answer based on your general knowledge of American law. If relevant, mention the price or availability of legal document preparation services using the information available.
+**Current Page Context:** {page_context}
 
-Do not assist users in drafting legal documents. Your purpose is to inform users about what legal documents may be relevant to their situation and give general guidance on costs or processes.
+**User Question:** {question}
 
-Only respond to law-related queries. If the user's message is unrelated to legal matters, reply with:  
-"I'm here to assist you with legal questions only. Please ask a legal query."
+**Relevant Context:** {context}
 
-If you're unsure about a legal answer, do not guess. Instead, respond with:  
-"I'm not sure from what I know, but here's what I know generally," followed by a helpful and brief legal explanation.
+**Response Guidelines:**
+1. Answer the legal question accurately but briefly
+2. Mention document preparation service if relevant
+3. Include ballpark pricing if available
+4. End with a scheduling suggestion when appropriate
 
-CONTEXT:
-{context}
+Example good response:
+"The filing fee for divorce in California is typically $435. We can help prepare all your divorce documents for $199. Would you like to schedule a consultation to get started?"
 
-QUESTION: {question}
+Now answer this question:
 
-Helpful Answer:
 """
+
+SCHEDULING_PROMPT = """You're LawDog, the legal assistant for LegalEasier. The user has shown interest in {service_type}. 
+
+Provide a friendly transition to scheduling that:
+1. Confirms their interest ("I see you're interested in {service_type}")
+2. Mentions the benefit ("Our experts can prepare all your documents correctly")
+3. Gives a clear call-to-action ("Shall I help you schedule a consultation?")
+
+Keep it under 2 sentences."""
+
+
 
 URGENCY_PROMPT_TEMPLATE = """
 You are a helpful legal assistant AI named LawDog. Always refer to yourself as LawDog . Your job is to determine how legally urgent each user's situation is.
@@ -83,7 +101,7 @@ llm = ChatGroq(
 
 main_prompt = PromptTemplate(
     template=MAIN_PROMPT_TEMPLATE,
-    input_variables=["context", "question"]
+    input_variables=["context", "question","page_context"]
 )
 urgency_prompt = PromptTemplate(
     input_variables=["formatted_data"],  
@@ -123,16 +141,60 @@ async def initialize_components():
         llm
     )
 
-async def answer_question(query: str):
+async def answer_question(query: str, page_context: str = "general"):
     try:
-        answer_result = await qa_chain.ainvoke({'query': query})
-        answer_text = answer_result['result'].strip()
+        relevant_docs = await vectorstore.as_retriever().aget_relevant_documents(query)
+        context_text = "\n\n".join(doc.page_content for doc in relevant_docs)
+
+        prompt = PromptTemplate(
+            template=MAIN_PROMPT_TEMPLATE,
+            input_variables=["context", "question", "page_context"]
+        ).format(
+            context=context_text,
+            question=query,
+            page_context=page_context
+        )
+
+        response = await llm.ainvoke(prompt)
+        answer_text = response.content.strip()
+
+        should_schedule = any(keyword in answer_text.lower() for keyword in [
+    "schedule a consultation",
+    "book a consultation",
+    "set up a consultation",
+    "schedule a call",
+    "speak with our team",
+    "talk to an expert",
+    "connect with a legal expert",
+    "our team would be happy to guide you",
+    "help you get started",
+    "shall i help you schedule",
+    "you can book a time",
+    "get started with us",
+    "our experts can assist",
+    "we can walk you through",
+    "would you like to schedule",
+    "consult with our team",
+    "ready to begin",
+    "guide you through the process"
+])
+
+
+        if should_schedule:
+            schedule_msg = await llm.ainvoke(
+                PromptTemplate(template=SCHEDULING_PROMPT, input_variables=["service_type"])
+                .format(service_type=page_context)
+            )
+            answer_text += " " + schedule_msg.content
+
         return {
-            'answer': answer_text,
+            "answer": answer_text,
+            "suggest_schedule": should_schedule
         }
+
     except Exception as e:
-        print(f"Error: {e}")
-        raise Exception("Failed to process legal query")
+        print("Error:", e)
+        raise Exception("Failed to process legal query.")
 
 async def determine_urgency(lead_data: List[dict]) -> List[dict]:
     try:

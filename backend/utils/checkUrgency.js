@@ -3,7 +3,6 @@ const Ai_url = process.env.FAST_API_BACKEND_URL;
 
 const checkUrgency = async (leads) => {
   try {
-    console.log(leads);
     const response = await axios.post(`${Ai_url}/check-urgency`, leads, {
       headers: {
         'Content-Type': 'application/json'

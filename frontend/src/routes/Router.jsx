@@ -10,6 +10,9 @@ import Contact from '../pages/Contact';
 import Blog from '../pages/Blog';
 import Verification from '../pages/Verification';
 import Schedule from '../pages/Schedule';
+import Admin from "../pages/Admin";
+
+
 const routes = createBrowserRouter([
     {
         path: '/',
@@ -50,6 +53,10 @@ const routes = createBrowserRouter([
     {
         path:'/schedule',
         element:<Schedule/>
+    },
+    {
+        path:'/admin/upload-blogs',
+        element:<Admin/>
     }
 ])
 

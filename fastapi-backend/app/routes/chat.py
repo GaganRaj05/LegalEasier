@@ -8,7 +8,7 @@ router = APIRouter()
 @router.post('/ask-legal')
 async def answer_query(data: ChatSchema):
     try:
-        answer = await answer_question(data.message)
+        answer = await answer_question(data.message, data.page_context)
         return {'answer':answer}
     except Exception as e:
         print(e)

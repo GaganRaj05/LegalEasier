@@ -161,6 +161,25 @@
 .dot:nth-child(3) {
   animation-delay: 0.4s;
 }
+.schedule-button-wrapper {
+  margin-top: 1rem;
+}
+
+.schedule-button {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.schedule-button:hover {
+  background-color: #0056b3;
+}
+
 
 @keyframes blink {
   0% { opacity: 0.2; }

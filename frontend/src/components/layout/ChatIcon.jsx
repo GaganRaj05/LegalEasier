@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ChatIcon.css'; 
 import Leads from '../ui/Leads';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import ChatContainer from '../ui/ChatContainer';
 const ChatIcon = () => {
-  const [isLeadsOpen, setIsLeadsOpen] = useState(false);
+  const [isLeadsOpen, setIsLeadsOpen] = useState(true);
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  useEffect(()=> {
+    if(localStorage.getItem('convo_id')) {
+      setIsLeadsOpen(false);
+    }
+  })
 
   const toggleChat = () => {
     if(localStorage.getItem('convo_id')) {

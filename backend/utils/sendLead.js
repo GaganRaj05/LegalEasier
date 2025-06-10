@@ -31,7 +31,7 @@ const sendEmailToUser = async (lead) => {
 const sendEmailToOwner = async (lead) => {
   await resend.emails.send({
     from: 'contact@legaleasier.org',
-    to: 'legaleasier.org@gmail.com',
+    to: 'rob@legaleasier.org',
     subject: 'New Lead Captured',
     html: `<div style="font-family: Arial, sans-serif; padding: 20px;">
           <h3>🚨 New Lead Captured</h3>

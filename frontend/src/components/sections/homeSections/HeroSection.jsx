@@ -24,7 +24,7 @@ const HeroSection = () => {
         setIsLoginOpen(true);
         return;
       }
-      setIsContactFormOpen(true);
+      navigate('/schedule')
     } else if (btnType === "Notary"){
       navigate("/legal-easier/notary-service");
     }

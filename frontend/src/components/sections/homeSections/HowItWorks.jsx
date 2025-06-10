@@ -38,7 +38,7 @@ const HowItWorks = () => {
         </div>
       </div>
       <div className="hw-btn">
-        <Button classname="primary-btn hw" onClick={()=>toast.error("Feature yet to be added")}>
+        <Button classname="primary-btn hw" onClick={()=>navigate('/schedule')}>
             Get Your Documents Now
         </Button>
         </div> 

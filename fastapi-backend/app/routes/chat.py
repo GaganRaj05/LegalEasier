@@ -20,7 +20,6 @@ async def process_leads(leads:List[Lead]):
     try:
         lead_data = [lead.dict() for lead in leads]
         result = await determine_urgency(lead_data)
-        print(result)
         return {
             "success":True,
             "result":result

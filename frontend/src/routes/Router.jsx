@@ -11,6 +11,7 @@ import Blog from '../pages/Blog';
 import Verification from '../pages/Verification';
 import Schedule from '../pages/Schedule';
 import Admin from "../pages/Admin";
+import LandingPage from '../pages/LandingPage';
 
 
 const routes = createBrowserRouter([
@@ -57,6 +58,10 @@ const routes = createBrowserRouter([
     {
         path:'/admin/upload-blogs',
         element:<Admin/>
+    },
+    {
+        path:'/landing-page/small-claims',
+        element:<LandingPage/>
     }
 ])
 

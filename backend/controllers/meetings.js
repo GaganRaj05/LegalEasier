@@ -17,7 +17,7 @@ const scheduleMeetings = async (req, res) => {
 
         await resend.emails.send({
             from:`contact@legaleasier.org`,
-            to:'gaganraj.dev05@gmail.com',
+            to:'rob@legaleasier.org',
             subject:`New meeting request`,
             html:`
                         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px;">

@@ -38,7 +38,7 @@ const NavBar = () => {
         setIsLoginOpen(true);
         return;
       }
-      setIsContactFormOpen(true);
+      navigate('/schedule')
     } else {
       toast.error("Feature yet to be added");
     }

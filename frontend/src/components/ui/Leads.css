@@ -108,6 +108,7 @@
   color: #007bff;
   background-color: white;
   border: none;
+  cursor: pointer;
 }
 
 .error-input {

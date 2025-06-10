@@ -19,6 +19,12 @@ const ChatContainer = ({ onClose }) => {
        </div>`
     ;
 
+  const getPageContext = ()=> {
+    const path = location.pathname.toLowerCase();
+    if(path.includes('small-claims')) return 'small_claims';
+    else return "General"
+
+  }
 
   useEffect(() => {
     if (bottomRef.current) {
@@ -38,12 +44,11 @@ const handleSubmit = async (e) => {
   setMessages(prev => [...prev, userMessage]);
   setQuery('');
   setIsTyping(true);
-
   try {
     const form = {
       convo_id: localStorage.getItem('convo_id'),
       message: query,
-      page_context: 'General'
+      page_context: getPageContext()
     };
 
     const response = await sendQuery(form); 

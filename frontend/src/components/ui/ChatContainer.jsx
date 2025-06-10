@@ -70,7 +70,7 @@ if (response.response.suggest_schedule) {
     sender: 'ai',
     text: `
       <div class="schedule-button-wrapper">
-        <a class="schedule-button" href="http://localhost:5173/schedule" target="_blank">
+        <a class="schedule-button" href="https://www.legaleasier.org/schedule" target="_blank">
           🗓️ Schedule a Consultation
         </a>
       </div>

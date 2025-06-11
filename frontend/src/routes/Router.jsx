@@ -12,7 +12,7 @@ import Verification from '../pages/Verification';
 import Schedule from '../pages/Schedule';
 import Admin from "../pages/Admin";
 import LandingPage from '../pages/LandingPage';
-
+import BlogDetail from '../pages/BlogDetail';
 
 const routes = createBrowserRouter([
     {
@@ -62,7 +62,11 @@ const routes = createBrowserRouter([
     {
         path:'/landing-page/small-claims',
         element:<LandingPage/>
-    }
+    },
+    {
+    path:'legal-easier/blog-page/:slug',
+    element:<BlogDetail/> 
+}
 ])
 
 const Router = () => {

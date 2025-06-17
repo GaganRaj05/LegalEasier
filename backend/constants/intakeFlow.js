@@ -1,6 +1,11 @@
 const commonIntake = {
+    start: {
+        question:"Hi there! I'm LawDog, your friendly legal AI Assistant, Tell me about your legal issue, So that I can help you further",
+        field:'start',
+        next:'name'
+    },
     name: {
-        question: "Hi there! I'm your LawDog AI Assistant. Let's get started with a few basics. What is your full name?",
+        question: "Let's get started with a few basics. What is your full name?",
         field: 'name',
         next: 'email',
     },
@@ -22,13 +27,13 @@ const commonIntake = {
     legal_issue: {
         question: 'Are you the one filing a case, have you been sued, or do you need a specific document?',
         field: 'legal_issue',
-        options: ['Filing a case', 'Been sued', 'Need specific document'],
+        options: ['Filing a case', 'Been sued/Evicted', 'Need specific document'],
         next: 'issue_type'
     },
     issue_type: {
         question: 'What type of legal issue is this about?',
         field: 'issue_type',
-        options: ['Eviction', 'Bankruptcy', 'Small_Claims','Civil_Lawsuit', 'Power_of_Attorney'],
+        options: ['Eviction', 'Bankruptcy', 'Small_Claims','Power_of_Attorney', 'other_flow'],
         next: (answer) => {
             console.log(answer)
             if (answer.toLowerCase() === 'eviction') return 'eviction_start';
@@ -36,8 +41,10 @@ const commonIntake = {
             else if(answer.toLowerCase() === "small claims") return "small_claims_start"
             else if(answer.toLowerCase() === "civil lawsuit") return "being_sued_start"
             else if(answer.toLowerCase()=== "power of attorney") return "power_of_attorney_start"
-            
+            else {
             return 'other_flow_start'; 
+
+            }
         }
     }
 };
@@ -193,14 +200,8 @@ const IntakeFlow = {
             next: "scheduleCallback",
         },
         scheduleCallback: {
-            question: "Thank you. We’ll take a closer look. To best assist you, we’ll need to schedule a callback.\nPlease choose a time that works for a quick 5-minute call.",
+            question: "Thank you. We’ll take a closer look. To best assist you, One of our technical experts will call you regarding your issue",
             field: "callbackTime",
-            next: "invoicePreference",
-        },
-        invoicePreference: {
-            question: "We’ll send an invoice for the applicable document preparation services. Look for an email from us shortly.",
-            field: "invoiceNotice",
-            next: "wrapUp",
         },
     },
     wrapUp: {

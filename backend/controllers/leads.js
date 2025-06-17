@@ -103,7 +103,7 @@ const startIntake = async (req, res) => {
     try {
         const user_id = generateUserId();
         await initializeUserSession(user_id);
-        const firstQuestion = commonIntake.name.question;
+        const firstQuestion = commonIntake.start.question;
 
         return res.status(200).json({
             success: true,

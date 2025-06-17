@@ -9,7 +9,7 @@ import ContactFormPopup from "./ContactForm";
 import { toast } from "react-toastify";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Leads from "../ui/Leads";
-
+import ChatContainer from "../ui/ChatContainer";
 const NavBar = () => {
   const navigate = useNavigate();
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -18,6 +18,7 @@ const NavBar = () => {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   const handleClick = (e, pageType) => {
     if (pageType === "services") {
@@ -32,6 +33,9 @@ const NavBar = () => {
     }
     else if(pageType === "Blog" ) {
       navigate('/legal-easier/blog-page');
+    }
+    else if(pageType === 'Get Help') {
+      setIsChatOpen(true);
     }
     else if (pageType === "Login") {
       if (!user) {
@@ -78,7 +82,7 @@ const NavBar = () => {
 
         <ul className={`nav-groups ${isMobileView ? "mobile-hidden" : ""}`}>
           <li>
-            <Button classname="primary-btn" onClick={(e) => handleClick(e, "Login")}>
+            <Button classname="primary-btn" onClick={(e) => handleClick(e, "Get Help")}>
               Get Help Now
             </Button>
           </li>
@@ -103,7 +107,7 @@ const NavBar = () => {
           <li onClick={(e) => handleClick(e, "Blog")}>Blog</li>
           <li onClick={(e) => handleClick(e, "Contact")}>Contact Us</li>
             <li>
-              <Button classname="primary-btn" onClick={(e) => handleClick(e, "Login")}>
+              <Button classname="primary-btn" onClick={(e) => handleClick(e, "Get Help")}>
                 Get Help Now
               </Button>
             </li>
@@ -132,6 +136,7 @@ const NavBar = () => {
       {isContactFormOpen && (
         <ContactFormPopup onClose={() => setIsContactFormOpen(false)} />
       )}
+      {isChatOpen && <ChatContainer onClose={()=>setIsChatOpen(false)}/>}
     </div>
   );
 };

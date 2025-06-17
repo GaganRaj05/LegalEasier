@@ -5,7 +5,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import ChatContainer from '../ui/ChatContainer';
 const ChatIcon = () => {
   const [isLeadsOpen, setIsLeadsOpen] = useState(false);
-  const [isChatOpen, setIsChatOpen] = useState(true);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(()=> {
     if(localStorage.getItem('convo_id')) {
@@ -14,11 +14,8 @@ const ChatIcon = () => {
   })
 
   const toggleChat = () => {
-    if(localStorage.getItem('convo_id')) {
-      setIsChatOpen(true);
-      return;
-    }
-    setIsLeadsOpen(true);
+    setIsChatOpen(true)
+    setIsLeadsOpen(false);
   };
 
   const handleCloseLeads = () => {

@@ -219,6 +219,12 @@ const ChatContainer = ({ onClose }) => {
   };
 
   const handleOptionClick = (option) => {
+    if(option === "other_flow")  {
+          setMessages((prev) => [...prev, { sender: "user", text: 'Other' }]);
+
+      handleIntakeSubmit(option);
+      return;
+    }
     setMessages((prev) => [...prev, { sender: "user", text: option }]);
     handleIntakeSubmit(option);
   };
@@ -252,7 +258,10 @@ const ChatContainer = ({ onClose }) => {
                           handleOptionClick(option);
                         }}
                       >
-                        {option}
+                       {option === "Eviction"
+  ? "I want to evict someone"
+  : option=== "other_flow" ? "Other" : option}
+
                       </button>
                     ))}
                   </div>
@@ -311,6 +320,10 @@ const ChatContainer = ({ onClose }) => {
 
                       <button type="submit" className="submit-button mt-4" disabled={isUploading}>
                         {isUploading ? <ClipLoader/> :"Upload Document"}
+                      </button>
+                      <button type="submit" className="submit-button" onClick={()=>handleIntakeSubmit("Not available at the moment")}>
+                        I do not have my document right now ..
+                        
                       </button>
                     </form>
                   </div>

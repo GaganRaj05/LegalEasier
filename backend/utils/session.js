@@ -5,7 +5,7 @@ const redis = new Redis(process.env.REDIS_URL);
 const initializeUserSession = async (userId) => {
     const session = {
         flow: 'common_intake',
-        step: 'name',
+        step: 'start',
         data: {},
         path: null
     };

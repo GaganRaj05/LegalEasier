@@ -7,11 +7,13 @@ import { useNavigate } from "react-router-dom";
 import LoginPopup from "../../layout/Login";
 import SignUpPopup from "../../layout/SignUp";
 import Leads from "../../ui/Leads";
+import ChatContainer from "../../ui/ChatContainer";
 const HeroSection = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isBotOpen, setIsBotOpen] = useState(false);
@@ -21,7 +23,7 @@ const HeroSection = () => {
     if (btnType === "Get Help Now") {
       console.log(btnType)
       if (!user) {
-        setIsLoginOpen(true);
+        setIsChatOpen(true)
         return;
       }
       navigate('/schedule')
@@ -80,8 +82,8 @@ const HeroSection = () => {
       {isContactFormOpen && (
         <ContactFormPopup onClose={() => setIsContactFormOpen(false)} />
       )}
-            {isBotOpen && <Leads onClose={()=>{setIsBotOpen(false)}} />}
-
+        {isBotOpen && <Leads onClose={()=>{setIsBotOpen(false)}} />}
+      {isChatOpen && <ChatContainer onClose={()=>setIsChatOpen(false)}/>}
     </>
   );
 };

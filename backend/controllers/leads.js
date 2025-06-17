@@ -52,9 +52,8 @@ const storeLeads = async (req, res) => {
 
 const getAiResponse = async (req, res) => {
   try {
-    const { convo_id, message, page_context } = req.body;
+    const {  message, page_context } = req.body;
     const ai_response = await axios.post(`${Ai_url}/ask-legal`, {
-      conversationId: convo_id,
       message: message,
       page_context:page_context
     });
@@ -65,22 +64,22 @@ const getAiResponse = async (req, res) => {
       .replace(/\s*\+\s*/g, ' ')  
       .replace(/\s+/g, ' ');  
 
-    const lead = await Leads.findOneAndUpdate(
-      { _id: convo_id },
-      {
-        $push: {
-          messages: {
-            user: message,
-            ai: new_ai_answer_text,
-          },
-        },
-        $set: {
-          lastActivityAt: new Date(),
-          inactive: false,
-        },
-      },
-      { new: true }
-    );
+    // const lead = await Leads.findOneAndUpdate(
+    //   { _id: convo_id },
+    //   {
+    //     $push: {
+    //       messages: {
+    //         user: message,
+    //         ai: new_ai_answer_text,
+    //       },
+    //     },
+    //     $set: {
+    //       lastActivityAt: new Date(),
+    //       inactive: false,
+    //     },
+    //   },
+    //   { new: true }
+    // );
 
     return res
       .status(200)

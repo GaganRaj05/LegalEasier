@@ -1,6 +1,6 @@
 const commonIntake = {
     name: {
-        question: "Hi there! I'm your LegalEasier Intake Assistant. Let's get started with a few basics. What is your full name?",
+        question: "Hi there! I'm your LawDog AI Assistant. Let's get started with a few basics. What is your full name?",
         field: 'name',
         next: 'email',
     },
@@ -28,10 +28,15 @@ const commonIntake = {
     issue_type: {
         question: 'What type of legal issue is this about?',
         field: 'issue_type',
-        options: ['Eviction', 'Bankruptcy', 'Other'],
+        options: ['Eviction', 'Bankruptcy', 'Small_Claims','Civil_Lawsuit', 'Power_of_Attorney'],
         next: (answer) => {
+            console.log(answer)
             if (answer.toLowerCase() === 'eviction') return 'eviction_start';
-            if (answer.toLowerCase() === 'bankruptcy') return 'bankruptcy_start';
+            else if (answer.toLowerCase() === 'bankruptcy') return 'bankruptcy_start';
+            else if(answer.toLowerCase() === "small claims") return "small_claims_start"
+            else if(answer.toLowerCase() === "civil lawsuit") return "being_sued_start"
+            else if(answer.toLowerCase()=== "power of attorney") return "power_of_attorney_start"
+            
             return 'other_flow_start'; 
         }
     }
@@ -91,6 +96,129 @@ const IntakeFlow = {
             question: "Please upload any collection letters, court papers, or bills you'd like us to review.",
             field: "uploadedDocs",
             upload: true,
+        },
+    },
+    small_claims_start: {
+        start: {
+            question: "Let’s get your money back. What amount are you suing for?",
+            field: "claimAmount",
+            next: "lawsuitReason",
+        },
+        lawsuitReason: {
+            question: "What is the reason for the lawsuit?",
+            field: "lawsuitReason",
+            next: "hasAgreement",
+        },
+        hasAgreement: {
+            question: "Do you have a written agreement or contract?",
+            field: "hasWrittenAgreement",
+            next: "defendantResponse",
+        },
+        defendantResponse: {
+            question: "Has the other party refused to pay or respond?",
+            field: "refusedToPay",
+            next: "uploadDocs",
+        },
+        uploadDocs: {
+            question: "Please upload any documents you want us to use (contracts, receipts, messages, etc.)",
+            field: "uploadedDocs",
+            upload: true,
+        },
+    },
+    being_sued_start: {
+        start: {
+            question: "Let’s protect your rights. When were you served with the court papers?",
+            field: "serviceDate",
+            next: "hasSummons",
+        },
+        hasSummons: {
+            question: "Do you have a copy of the summons or complaint?",
+            field: "hasSummonsCopy",
+            next: "caseNumber",
+            upload: true,
+        },
+        caseNumber: {
+            question: "What is the case number listed?",
+            field: "caseNumber",
+            next: "responseDeadline",
+        },
+        responseDeadline: {
+            question: "Do you know the deadline to respond?",
+            field: "responseDeadline",
+            next: "uploadDocs",
+        },
+        uploadDocs: {
+            question: "Please upload any documents you've received so far.",
+            field: "uploadedDocs",
+            upload: true,
+        },
+    },
+    power_of_attorney_start: {
+        start: {
+            question: "Let’s help you prepare a Power of Attorney. What type of POA are you looking to create?",
+            field: "poaType",
+            options: ["General", "Medical", "Financial", "Durable", "Limited", "Not Sure"],
+            next: "principalName",
+        },
+        principalName: {
+            question: "Who will be granting the authority (the principal)? Please provide their full legal name.",
+            field: "principalName",
+            next: "agentName",
+        },
+        agentName: {
+            question: "Who will be receiving the authority (the agent)? Please provide their full legal name.",
+            field: "agentName",
+            next: "poaEffectiveness",
+        },
+        poaEffectiveness: {
+            question: "Should this POA be effective immediately, or only under certain conditions (like incapacity)?",
+            field: "poaEffectiveness",
+            next: "extraNotes",
+        },
+        extraNotes: {
+            question: "Is there anything else we should know or include?",
+            field: "extraNotes",
+            next: "uploadDocs",
+        },
+        uploadDocs: {
+            question: "Please upload any drafts or notes you’ve already prepared.",
+            field: "uploadedDocs",
+            upload: true,
+        },
+    },
+    other_flow_start: {
+        start: {
+            question: "Please tell us a little about your situation. What kind of legal help do you think you need?",
+            field: "otherDetails",
+            next: "scheduleCallback",
+        },
+        scheduleCallback: {
+            question: "Thank you. We’ll take a closer look. To best assist you, we’ll need to schedule a callback.\nPlease choose a time that works for a quick 5-minute call.",
+            field: "callbackTime",
+            next: "invoicePreference",
+        },
+        invoicePreference: {
+            question: "We’ll send an invoice for the applicable document preparation services. Look for an email from us shortly.",
+            field: "invoiceNotice",
+            next: "wrapUp",
+        },
+    },
+    wrapUp: {
+        scheduleConsult: {
+            question: "Would you like to schedule a free 5-minute consultation to confirm your next steps?",
+            field: "wantsConsult",
+            options: ["Yes, schedule a call", "No, just prepare my documents"],
+            next: "paymentChoice",
+        },
+        paymentChoice: {
+            question: "Would you prefer to pay now or receive an invoice by email?",
+            field: "paymentPreference",
+            options: ["Pay now", "Send invoice"],
+            next: "endMessage",
+        },
+        endMessage: {
+            question: "Thank you! You're in good hands. We'll follow up shortly.",
+            field: "endConfirmation",
         },
     },
 };

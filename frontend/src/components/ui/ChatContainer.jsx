@@ -168,7 +168,6 @@ const ChatContainer = ({ onClose }) => {
     }
     try {
       const form = {
-        convo_id: localStorage.getItem("convo_id"),
         message: query,
         page_context: getPageContext(),
       };

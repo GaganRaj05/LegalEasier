@@ -47,6 +47,66 @@ const sendEmailToOwner = async (lead) => {
   });
 };
 
-module.exports = { sendEmailToUser, sendEmailToOwner };
+
+const sendEmailToNewUser = async (email, userName) => {
+  try {
+    await resend.emails.send({
+      from: 'contact@legaleasier.org',
+      to: email,
+      subject: 'Welcome to LegalEasier — We’ve Received Your Intake',
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <h2 style="color: #0044cc;">Hi${userName ? ' ' + userName : ''},</h2>
+          <p>Thank you for getting started with <strong>LegalEasier</strong>.</p>
+          <p>We’ve received your information and one of our legal intake specialists will review it shortly.</p>
+          <p>If any additional information is needed, we'll reach out to you directly at this email address.</p>
+          <p>In the meantime, feel free to reply to this email if you have any questions or updates.</p>
+          <br />
+          <p>Best regards,</p>
+          <p><strong>The LegalEasier Team</strong></p>
+          <hr />
+          <small style="color: #888;">This is an automated message. For urgent matters, contact us at support@legaleasier.org</small>
+        </div>
+      `,
+    });
+    console.log('Email sent to new user successfully');
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+const sendNewUserAlert = async (userData) => {
+  try {
+    const { name, email, phone, address, legal_issue, issue_type, document } = userData;
+
+    await resend.emails.send({
+      from: 'contact@legaleasier.org',
+      to: 'rob@legaleasier.org',
+      subject: '📥 New Legal Intake Submission Received',
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <h2 style="color: #0044cc;">New Intake Alert</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Location:</strong> ${address}</p>
+          <p><strong>Legal Status:</strong> ${legal_issue}</p>
+          <p><strong>Issue Type:</strong> ${issue_type}</p>
+                    <p><strong>Uploaded Document:</strong> ${document}</p>
+
+          <hr />
+          <small style="color: #888;">This is an automated notification from LegalEasier Intake System</small>
+        </div>
+      `,
+    });
+
+    console.log('Intake notification sent to the owner successfully');
+  } catch (err) {
+    console.error('Error sending intake email to owner:', err.message);
+  }
+};
+
+
+module.exports = { sendEmailToUser, sendEmailToOwner, sendEmailToNewUser, sendNewUserAlert };
 
 

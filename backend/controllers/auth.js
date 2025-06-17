@@ -5,6 +5,8 @@ const jsonwebtoken = require('jsonwebtoken');
 const Redis = require('ioredis');
 const { emailLimiter } = require('../utils/limiters');
 const redis = new Redis(process.env.REDIS_URL);
+const {initializeUserSession, getUserSession, updateUserSession, deleteUserSession} = require('../utils/session')
+
 
 
 const handleSignIn = async(req, res)=> {
@@ -153,5 +155,6 @@ const checkAuth = async(req, res) => {
 
     }
 }
+
 
 module.exports  = {getOtp, handleSignIn, handleSignUp,validateOTP,checkAuth};

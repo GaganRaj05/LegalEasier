@@ -180,6 +180,122 @@
   background-color: #0056b3;
 }
 
+.options {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.options button {
+  padding: 8px 12px;
+  background-color: #edf2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.options button:hover {
+  background-color: #dbeafe;
+}
+/* File Upload Wrapper */
+.file-upload-wrapper {
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form Styling */
+.file-upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* File Input Container */
+.file-input-container {
+  position: relative;
+}
+
+/* Hide the default file input */
+.file-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Custom file input label */
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.file-input-label:hover {
+  border-color: #aaa;
+  background-color: #f0f0f0;
+}
+
+.browse-text {
+  color: #555;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.browse-button {
+  padding: 6px 12px;
+  background-color: #4a6cf7;
+  color: white;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: background-color 0.3s;
+}
+
+.file-input-label:hover .browse-button {
+  background-color: #3a5bd9;
+}
+
+/* Submit Button */
+.submit-button {
+  padding: 12px 20px;
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #3a5bd9;
+  transform: translateY(-1px);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* File name display (optional) */
+.file-name-display {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #666;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
 
 @keyframes blink {
   0% { opacity: 0.2; }

@@ -3,7 +3,6 @@ const uploadMedia = require("../utils/uploadMedia");
 
 const uploadBlog = async (req, res) => {
   try {
-    console.log("incoming")
     const { title, published, author, category, description } = req.body;
 
     const file = req.files.img[0];

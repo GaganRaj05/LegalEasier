@@ -7,10 +7,8 @@ import ContactHero from "./ContactSections/ContactPageHero";
 const ContactPageSection = () => {
     return(
         <>
-            <NavBar/>
                 <ContactHero/>
                 <ContactPageForm/>
-            <Footer/>
         </>
     )
 }

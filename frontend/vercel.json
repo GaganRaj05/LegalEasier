@@ -18,20 +18,9 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "header",
-          "key": "user-agent",
-          "value": ".*(Googlebot|Bingbot|Yahoo|DuckDuckBot|YandexBot|baiduspider).*"
-        }
-      ],
-      "destination": "https://service.prerender.io/https://www.legaleasier.org/:path*"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/index.html"
+    { 
+      "source": "/:path*", 
+      "destination": "/index.html" 
     }
   ]
 }

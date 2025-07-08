@@ -54,7 +54,7 @@ const HeroSection = () => {
       </div>
       <div className="fall-container">
         <img
-          src="https://www.sispnhost.com/apps-for-steps/wp-content/uploads/2025/05/Group-2.svg"
+          src="/Group-2.svg"
           alt="Falling Ball"
           className="falling-image curved-fall"
         />

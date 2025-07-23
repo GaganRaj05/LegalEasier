@@ -9,11 +9,9 @@ const HelpAndFaq = lazy(() => import('../pages/HelpAndFaq'));
 const PrivacyPolicy = lazy(() => import('../pages/PrivacyPolicy'));
 const Contact = lazy(() => import('../pages/Contact'));
 const Blog = lazy(() => import('../pages/Blog'));
-const Verification = lazy(() => import('../pages/Verification'));
 const Schedule = lazy(() => import('../pages/Schedule'));
 const Admin = lazy(() => import('../pages/Admin'));
 const LandingPage = lazy(() => import('../pages/LandingPage'));
-const BlogDetail = lazy(() => import('../pages/BlogDetail'));
 
 import Loader from '../components/layout/Loader';
 
@@ -23,14 +21,6 @@ const routes = createBrowserRouter([
     element: (
       <Suspense fallback={<Loader />}>
         <Home />
-      </Suspense>
-    ),
-  },
-  {
-    path: '/1bb89613aa75c37f72a131644ee19ccb.html',
-    element: (
-      <Suspense fallback={<Loader />}>
-        <Verification />
       </Suspense>
     ),
   },
@@ -114,14 +104,7 @@ const routes = createBrowserRouter([
       </Suspense>
     ),
   },
-  {
-    path: 'legal-easier/blog-page/:slug',
-    element: (
-      <Suspense fallback={<Loader />}>
-        <BlogDetail />
-      </Suspense>
-    ),
-  },
+
 ]);
 
 const Router = () => {

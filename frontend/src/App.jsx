@@ -1,13 +1,18 @@
 import Router from './routes/Router';
 import { ToastContainer } from 'react-toastify';
-import ChatIcon from "./components/layout/ChatIcon"
+import { lazy, Suspense } from 'react';
+
+const ChatIcon = lazy(() => import('./components/layout/ChatIcon'));
 function App() {
 
   return (
     <>
       <Router/>
       <ToastContainer position="top-center" autoClose={3000} />
-      <ChatIcon/>
+            <Suspense fallback={null}>
+        <ChatIcon />
+      </Suspense>
+
     </>
   )
 }

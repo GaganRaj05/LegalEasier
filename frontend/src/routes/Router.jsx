@@ -33,7 +33,7 @@ const routes = createBrowserRouter([
     ),
   },
   {
-    path: 'legal-easier/notary-service',
+    path: '/legal-easier/notary-service',
     element: (
       <Suspense fallback={<Loader />}>
         <Notary />
@@ -41,7 +41,7 @@ const routes = createBrowserRouter([
     ),
   },
   {
-    path: 'legal-easier/Terms&Conditions',
+    path: '/legal-easier/Terms&Conditions',
     element: (
       <Suspense fallback={<Loader />}>
         <TermsAndConditions />
@@ -49,7 +49,7 @@ const routes = createBrowserRouter([
     ),
   },
   {
-    path: 'legal-easier/HelpAndFaq',
+    path: '/legal-easier/HelpAndFaq',
     element: (
       <Suspense fallback={<Loader />}>
         <HelpAndFaq />
@@ -57,7 +57,7 @@ const routes = createBrowserRouter([
     ),
   },
   {
-    path: 'legal-easier/Privacy-Policy',
+    path: '/legal-easier/Privacy-Policy',
     element: (
       <Suspense fallback={<Loader />}>
         <PrivacyPolicy />
@@ -65,7 +65,7 @@ const routes = createBrowserRouter([
     ),
   },
   {
-    path: 'legal-easier/contact-us',
+    path: '/legal-easier/contact-us',
     element: (
       <Suspense fallback={<Loader />}>
         <Contact />
@@ -73,7 +73,7 @@ const routes = createBrowserRouter([
     ),
   },
   {
-    path: 'legal-easier/blog-page',
+    path: '/legal-easier/blog-page',
     element: (
       <Suspense fallback={<Loader />}>
         <Blog />

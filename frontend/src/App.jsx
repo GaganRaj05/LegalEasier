@@ -1,6 +1,6 @@
 import Router from './routes/Router';
 import { ToastContainer } from 'react-toastify';
-import ChatIcon from './components/layout/ChatIcon';
+import ChatIcon from "./components/layout/ChatIcon"
 function App() {
 
   return (

@@ -141,7 +141,6 @@ const canonicalUrl = cleanUrl.toString();
       <meta name="twitter:description" content=${seo.description} />
       <meta name="twitter:image" content=${seo.image } />
 
-      {/* Canonical Tag*/}
       <link rel="canonical" href=${canonicalUrl} />
 
 

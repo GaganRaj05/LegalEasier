@@ -143,7 +143,7 @@ export default async function middleware(request) {
 <meta name="twitter:image" content="${seo.image}" />
 
 
-<link rel="canonical" href=${url} />
+<link rel="canonical" href="${url}" />
 
 
         <link rel="icon" href="/favicon.svg" />

@@ -128,8 +128,10 @@ const canonicalUrl = cleanUrl.toString();
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="${seo.description}" />
         <title>${seo.title}</title>
+             <meta name="msvalidate.01" content="E9CC055B17E43216C6A5EE517718AF75" />
+        <meta name="description" content="${seo.description}" />
+
         <meta property="og:title" content=${seo.title} />
       <meta property="og:description" content=${seo.description} />
       <meta property="og:image" content=${seo.image} />

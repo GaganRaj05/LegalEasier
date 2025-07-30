@@ -7,9 +7,6 @@ export const config = {
 export default async function middleware(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
-const cleanUrl = new URL(request.url);
-cleanUrl.search = ''; 
-const canonicalUrl = cleanUrl.toString();
 
   const seoMap = {
     "/": {
@@ -143,7 +140,7 @@ const canonicalUrl = cleanUrl.toString();
       <meta name="twitter:description" content=${seo.description} />
       <meta name="twitter:image" content=${seo.image } />
 
-      <link rel="canonical" href=${canonicalUrl} />
+      <link rel="canonical" href=${url} />
 
 
         <link rel="icon" href="/favicon.svg" />

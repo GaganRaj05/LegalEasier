@@ -125,22 +125,25 @@ export default async function middleware(request) {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="icon" type="image/png" href="https://i.ibb.co/svm58ypR/company-logo.jpg" />
+
         <title>${seo.title}</title>
              <meta name="msvalidate.01" content="E9CC055B17E43216C6A5EE517718AF75" />
         <meta name="description" content="${seo.description}" />
 
-        <meta property="og:title" content=${seo.title} />
-      <meta property="og:description" content=${seo.description} />
-      <meta property="og:image" content=${seo.image} />
-      <meta property="og:url" content=${seo.url} />
-      <meta property="og:type" content="website" />
+<meta property="og:title" content="${seo.title}" />
+<meta property="og:description" content="${seo.description}" />
+<meta property="og:image" content="https://i.ibb.co/svm58ypR/company-logo.jpg" />
+<meta property="og:url" content="${seo.url}" />
+<meta property="og:type" content="website" />
 
-              <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content=${seo.title} />
-      <meta name="twitter:description" content=${seo.description} />
-      <meta name="twitter:image" content=${seo.image } />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${seo.title}" />
+<meta name="twitter:description" content="${seo.description}" />
+<meta name="twitter:image" content="${seo.image}" />
 
-      <link rel="canonical" href=${url} />
+
+<link rel="canonical" href=${url} />
 
 
         <link rel="icon" href="/favicon.svg" />

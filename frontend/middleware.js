@@ -145,7 +145,7 @@ export default async function middleware(request) {
 
 <link rel="canonical" href="${url}" />
 
-
+<meta name="google-site-verification" content="c4E_F5AAxqTTrujHkAVaF2KJTEHiSqcgj1h2yPO3aZE" />
         <link rel="icon" href="/favicon.svg" />
             <!-- Google Tag Manager -->
     <script>

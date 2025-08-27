@@ -128,7 +128,7 @@ export default async function middleware(request) {
             <link rel="icon" type="image/png" href="https://i.ibb.co/svm58ypR/company-logo.jpg" />
 
         <title>${seo.title}</title>
-             <meta name="msvalidate.01" content="E9CC055B17E43216C6A5EE517718AF75" />
+<meta name="msvalidate.01" content="7D65F65327857C0CA78AF558FA21F652" />
         <meta name="description" content="${seo.description}" />
 
 <meta property="og:title" content="${seo.title}" />
